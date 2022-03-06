@@ -5,5 +5,6 @@ import { PGridComponent } from './p-grid/p-grid.component';
 @NgModule({
   declarations: [PGridComponent],
   imports: [CommonModule],
+  exports: [PGridComponent],
 })
 export class SharedModule {}
