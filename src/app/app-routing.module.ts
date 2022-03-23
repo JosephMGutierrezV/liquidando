@@ -1,9 +1,14 @@
+import { LadingComponent } from './modules/lading/lading.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 
 const routes: Routes = [
+  {
+    path: 'home',
+    component: LadingComponent,
+  },
   {
     path: 'login',
     component: LoginComponent,
@@ -13,7 +18,7 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: '',
+    path: 'dashboard',
     loadChildren: () =>
       import('./modules/liquidation/liquidation.module').then(
         (m) => m.LiquidationModule
@@ -21,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'home',
   },
 ];
 

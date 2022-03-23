@@ -1,0 +1,102 @@
+$primary: #32a19f;
+$secondary: #7ff4f1;
+$third: #00d8ff;
+$white: #ffffff;
+$background: #129390;
+$background-secondary: #3c3c3b;
+
+fa-icon {
+  cursor: pointer;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+nav {
+  img {
+    width: 9%;
+  }
+}
+
+nav {
+  form {
+    button {
+      cursor: pointer;
+      border-radius: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      -ms-border-radius: 25px;
+      -o-border-radius: 25px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.vertical-center {
+  min-height: 50%; /* Fallback for browsers do NOT support vh unit */
+  min-height: 50vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+
+.text-color-primary {
+  color: $primary;
+}
+
+.intro {
+  margin-left: 1rem;
+}
+
+.margin-left {
+  margin-left: 3rem;
+}
+
+.margin-left-1 {
+  margin-left: 1rem;
+}
+
+.text-color-white {
+  color: $white;
+}
+
+.container-green {
+  background-color: $background;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.container-radio {
+  background-color: $secondary;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.button-radius {
+  border-radius: 25px;
+}
+
+.color-third {
+  color: $third;
+}
+
+.background-dark {
+  background-color: $background-secondary;
+}
+
+.btn-outline-dark {
+  background-color: #ffffff;
+}
+
+.background-blue {
+  background-color: $secondary;
+}

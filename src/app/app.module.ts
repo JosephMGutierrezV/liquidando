@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthModule } from './modules/auth/auth.module';
 import { LadingModule } from './modules/lading/lading.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { LadingModule } from './modules/lading/lading.module';
     NgbModule,
     AuthModule,
     LadingModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
