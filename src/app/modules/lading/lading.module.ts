@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LadingComponent } from './lading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [LadingComponent],
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, NgbCollapseModule],
 })
-export class LadingModule {
-  public faArrowDown = faArrowDown;
-}
+export class LadingModule {}

@@ -100,3 +100,29 @@ nav {
 .background-blue {
   background-color: $secondary;
 }
+
+.container_header_questions {
+  color: #ffffff;
+  background-color: $background;
+}
+
+.footer {
+  background-color: $background-secondary;
+  color: #ffffff;
+  p {
+    margin: 0;
+  }
+  .icon-radius {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    background-color: #ffffff;
+    img {
+      width: 25px;
+      cursor: pointer;
+    }
+  }
+}
