@@ -1,0 +1,15 @@
+<div class="card">
+  <div
+    (click)="collapse.toggle()"
+    [attr.aria-expanded]="!isCollapsed"
+    aria-controls="collapseExample"
+    class="card-header container_header_questions d-flex align-items-center justify-content-between"
+  >
+    <h5>Que tasas puedo calcular?</h5>
+    <fa-icon *ngIf="!isCollapsed" [icon]="faAngleDown" size="lg"></fa-icon>
+    <fa-icon *ngIf="isCollapsed" [icon]="faAngleUp" size="lg"></fa-icon>
+  </div>
+  <div class="card-body" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+    <p>Actualmente contamos con tasas para</p>
+  </div>
+</div>
