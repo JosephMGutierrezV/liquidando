@@ -104,6 +104,15 @@
         </div>
       </div>
     </div>
+
+    <div class="col-12 mb-5">
+      <hr />
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid">
+  <div class="row">
     <div class="col-12 text-center container-green mb-5">
       <div class="row">
         <div class="col-12 mt-5 mb-5">
@@ -138,6 +147,11 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="row">
     <div class="col-6">
       <img
         src="../assets/images/Computador estadisticas.svg"
@@ -243,9 +257,6 @@
         </div>
       </div>
     </div>
-    <div class="col-12 mb-5">
-      <hr />
-    </div>
     <div class="col-12 text-center mb-5">
       <h3 class="text-color-primary">Precios</h3>
       <p>Conozca nuestros precios para firmas::contactanos</p>
@@ -323,6 +334,11 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="container-fluid">
+  <div class="row">
     <div class="col-12 background-blue mt-5 mb-5 p-3">
       <div class="row">
         <div class="col-8">
@@ -389,34 +405,17 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="row">
     <div class="col-12 mb-5 text-center">
       <h3 class="text-color-primary">Preguntas frecuentes</h3>
       <p>Dudas? Resuelvelas rapido consultando nuestra guia</p>
     </div>
     <div class="col-6 mb-5">
-      <div class="card">
-        <div
-          (click)="collapse.toggle()"
-          [attr.aria-expanded]="!isCollapsed"
-          aria-controls="collapseExample"
-          class="card-header container_header_questions d-flex align-items-center justify-content-between"
-        >
-          <h5>Que tasas puedo calcular?</h5>
-          <fa-icon
-            *ngIf="!isCollapsed"
-            [icon]="faAngleDown"
-            size="lg"
-          ></fa-icon>
-          <fa-icon *ngIf="isCollapsed" [icon]="faAngleUp" size="lg"></fa-icon>
-        </div>
-        <div
-          class="card-body"
-          #collapse="ngbCollapse"
-          [(ngbCollapse)]="isCollapsed"
-        >
-          <p>Actualmente contamos con tasas para</p>
-        </div>
-      </div>
+      <app-question></app-question>
     </div>
     <div class="col-6 mb-5">
       <div class="text-end">
@@ -429,7 +428,8 @@
     </div>
   </div>
 </section>
-<div class="footer container-fluid col-12 mt-5">
+
+<section class="footer container-fluid col-12 mt-5">
   <div class="row">
     <div class="col-4 order-first">
       <div class="w-100"></div>
@@ -454,4 +454,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>
