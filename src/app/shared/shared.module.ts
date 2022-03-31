@@ -4,10 +4,22 @@ import { CommonModule } from '@angular/common';
 import { PGridComponent } from './p-grid/p-grid.component';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [PGridComponent, QuestionComponent],
+  declarations: [
+    PGridComponent,
+    QuestionComponent,
+    NavbarComponent,
+    SidebarComponent,
+  ],
   imports: [CommonModule, FontAwesomeModule, NgbCollapseModule],
-  exports: [PGridComponent, QuestionComponent],
+  exports: [
+    PGridComponent,
+    QuestionComponent,
+    NavbarComponent,
+    SidebarComponent,
+  ],
 })
 export class SharedModule {}

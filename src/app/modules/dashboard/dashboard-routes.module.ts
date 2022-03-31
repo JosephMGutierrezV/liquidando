@@ -5,7 +5,7 @@ import { dashboardRoutes } from './dashboard.routes';
 
 const rutasHijas: Routes = [
   {
-    path: 'dashboard',
+    path: '',
     component: DashboardComponent,
     children: dashboardRoutes,
   },

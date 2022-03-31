@@ -64,6 +64,18 @@ nav {
   background-color: $background;
 }
 
+.container-green::after {
+  content: "";
+  background-color: $background;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transform: skewY(-8deg);
+  transform: skewY(-8deg);
+  -moz-transform: skewY(-8deg);
+  -ms-transform: skewY(-8deg);
+  -o-transform: skewY(-8deg);
+}
+
 .text-justify {
   text-align: justify;
 }
