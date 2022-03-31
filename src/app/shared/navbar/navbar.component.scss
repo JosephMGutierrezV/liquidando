@@ -53,7 +53,6 @@
   -webkit-transition: width 0.25s ease;
   -moz-transition: width 0.25s ease;
   -ms-transition: width 0.25s ease;
-  color: #ffffff;
   padding-left: 15px;
   padding-right: 15px;
   height: 63px;
@@ -218,4 +217,26 @@
     display: flex;
     margin-top: 0.5rem;
   }
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.img-xs {
+  width: 37px;
+  height: 37px;
+}
+
+.profile {
+  color: #a5a5a5;
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+.container-left {
+  height: 63px;
+  color: #289d9a;
 }
