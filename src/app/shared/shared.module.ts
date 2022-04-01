@@ -6,6 +6,7 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NavbarComponent,
     SidebarComponent,
   ],
-  imports: [CommonModule, FontAwesomeModule, NgbCollapseModule],
+  imports: [RouterModule, CommonModule, FontAwesomeModule, NgbCollapseModule],
   exports: [
     PGridComponent,
     QuestionComponent,

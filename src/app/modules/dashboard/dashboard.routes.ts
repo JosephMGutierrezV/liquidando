@@ -5,6 +5,6 @@ import { HomeComponent } from '../liquidation/home/home.component';
 
 export const dashboardRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'liquide', component: LiquideComponent },
-  { path: 'historical', component: HistoricalComponent },
+  { path: 'liquidate', component: LiquideComponent },
+  { path: 'record', component: HistoricalComponent },
 ];
