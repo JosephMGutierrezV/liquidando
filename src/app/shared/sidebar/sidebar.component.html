@@ -1,24 +1,42 @@
 <nav class="sidebar shadow-lg sidebar-offcanvas">
   <ul class="nav">
     <li class="nav-item border">
-      <a routerLink="/dashboard/home" class="nav-link">
-        <fa-icon [icon]="faHome" size="lg"></fa-icon>
+      <a
+        routerLink="/dashboard/home"
+        routerLinkActive="active-route"
+        class="nav-link"
+      >
+        <div class="container-menu">
+          <fa-icon [icon]="faHome" size="lg"></fa-icon>
+          <p>Inicio</p>
+        </div>
       </a>
-      <p class="text-center">Inicio</p>
     </li>
 
     <li class="nav-item border">
-      <a routerLink="/dashboard/liquidate" class="nav-link">
-        <fa-icon [icon]="faCalculator" size="lg"></fa-icon>
+      <a
+        routerLink="/dashboard/liquidate"
+        routerLinkActive="active-route"
+        class="nav-link"
+      >
+        <div class="container-menu">
+          <fa-icon [icon]="faCalculator" size="lg"></fa-icon>
+          <p>Liquide</p>
+        </div>
       </a>
-      <p class="text-center">Liquide</p>
     </li>
 
     <li class="nav-item border">
-      <a routerLink="/dashboard/record" class="nav-link">
-        <fa-icon [icon]="faClock" size="lg"></fa-icon>
+      <a
+        routerLink="/dashboard/record"
+        routerLinkActive="active-route"
+        class="nav-link"
+      >
+        <div class="container-menu">
+          <fa-icon [icon]="faClock" size="lg"></fa-icon>
+          <p>Historial</p>
+        </div>
       </a>
-      <p class="text-center">Historial</p>
     </li>
   </ul>
 </nav>

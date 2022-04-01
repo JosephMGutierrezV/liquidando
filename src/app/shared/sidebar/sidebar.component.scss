@@ -4,16 +4,17 @@
   background: #ffffff;
   font-family: "Poppins", sans-serif;
   padding: 0;
-  width: 100px;
+  width: 110px;
   z-index: 11;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
+  -o-transition: width 0.25s ease, background 0.25s ease;
 }
 .sidebar .nav {
   overflow: hidden;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: column;
 }
 .sidebar .nav .nav-item .collapse {
@@ -24,10 +25,17 @@
   background: #fafbfc;
 }
 .sidebar .nav .nav-item .nav-link {
-  align-items: center;
-  display: flex;
-  padding: 16px 35px;
-  white-space: nowrap;
-  height: 52px;
-  color: #4a4a4a;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #c0c0c0;
+}
+
+.active-route {
+  color: #57b2b0 !important;
+  border-left: 7px solid #57b2b0 !important;
+}
+
+.container-menu {
+  padding-top: 20px;
 }
