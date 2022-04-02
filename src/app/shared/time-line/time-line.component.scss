@@ -1,0 +1,38 @@
+$active: #1e9895;
+$inactive: #d8d8d8;
+
+.custom-marker {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  color: #1e9895 !important;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+::ng-deep
+  app-time-line
+  > p-timeline
+  > div
+  > div:last-child
+  > div.p-timeline-event-separator
+  > div {
+  display: none;
+}
+
+::ng-deep
+  app-time-line
+  > p-timeline
+  > div
+  > div:nth-last-child(2)
+  > div.p-timeline-event-separator
+  > div.p-timeline-event-connector {
+  display: none;
+}
+
+.container-time-line {
+  position: relative;
+  left: 25px;
+}

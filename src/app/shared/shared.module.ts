@@ -7,6 +7,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+import { TimeLineComponent } from './time-line/time-line.component';
+import { TimelineModule } from 'primeng/timeline';
 
 @NgModule({
   declarations: [
@@ -14,13 +16,21 @@ import { RouterModule } from '@angular/router';
     QuestionComponent,
     NavbarComponent,
     SidebarComponent,
+    TimeLineComponent,
   ],
-  imports: [RouterModule, CommonModule, FontAwesomeModule, NgbCollapseModule],
+  imports: [
+    RouterModule,
+    CommonModule,
+    FontAwesomeModule,
+    NgbCollapseModule,
+    TimelineModule,
+  ],
   exports: [
     PGridComponent,
     QuestionComponent,
     NavbarComponent,
     SidebarComponent,
+    TimeLineComponent,
   ],
 })
 export class SharedModule {}
