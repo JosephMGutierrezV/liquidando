@@ -9,6 +9,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { TimeLineComponent } from './time-line/time-line.component';
 import { TimelineModule } from 'primeng/timeline';
+import { StepsLiquideComponent } from './steps-liquide/steps-liquide.component';
+import { StepsButtonsComponent } from './steps-buttons/steps-buttons.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { TimelineModule } from 'primeng/timeline';
     NavbarComponent,
     SidebarComponent,
     TimeLineComponent,
+    StepsLiquideComponent,
+    StepsButtonsComponent,
   ],
   imports: [
     RouterModule,
@@ -31,6 +35,8 @@ import { TimelineModule } from 'primeng/timeline';
     NavbarComponent,
     SidebarComponent,
     TimeLineComponent,
+    StepsLiquideComponent,
+    StepsButtonsComponent,
   ],
 })
 export class SharedModule {}

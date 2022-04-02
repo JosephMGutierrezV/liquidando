@@ -1,4 +1,9 @@
-<p-timeline [value]="events" layout="horizontal" align="bottom" class="container-time-line">
+<p-timeline
+  [value]="events"
+  layout="horizontal"
+  align="bottom"
+  class="container-time-line"
+>
   <ng-template pTemplate="content" let-event>
     {{ event }}
   </ng-template>
