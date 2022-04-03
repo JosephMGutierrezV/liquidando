@@ -11,6 +11,10 @@ import { TimeLineComponent } from './time-line/time-line.component';
 import { TimelineModule } from 'primeng/timeline';
 import { StepsLiquideComponent } from './steps-liquide/steps-liquide.component';
 import { StepsButtonsComponent } from './steps-buttons/steps-buttons.component';
+import { PChartLineComponent } from './p-chart-line/p-chart-line.component';
+import { ChartModule } from 'primeng/chart';
+import { IndicatorComponent } from './indicator/indicator.component';
+import { NewsComponent } from './news/news.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,9 @@ import { StepsButtonsComponent } from './steps-buttons/steps-buttons.component';
     TimeLineComponent,
     StepsLiquideComponent,
     StepsButtonsComponent,
+    PChartLineComponent,
+    IndicatorComponent,
+    NewsComponent,
   ],
   imports: [
     RouterModule,
@@ -28,6 +35,7 @@ import { StepsButtonsComponent } from './steps-buttons/steps-buttons.component';
     FontAwesomeModule,
     NgbCollapseModule,
     TimelineModule,
+    ChartModule,
   ],
   exports: [
     PGridComponent,
@@ -37,6 +45,9 @@ import { StepsButtonsComponent } from './steps-buttons/steps-buttons.component';
     TimeLineComponent,
     StepsLiquideComponent,
     StepsButtonsComponent,
+    PChartLineComponent,
+    IndicatorComponent,
+    NewsComponent,
   ],
 })
 export class SharedModule {}
