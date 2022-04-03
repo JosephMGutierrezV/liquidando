@@ -8,6 +8,7 @@ $inactive: #d8d8d8;
   align-items: center;
   justify-content: center;
   color: #1e9895 !important;
+  background-color: #1e9895 !important;
   border-radius: 50%;
   z-index: 1;
 }
@@ -35,4 +36,9 @@ $inactive: #d8d8d8;
 .container-time-line {
   position: relative;
   left: 45px;
+}
+
+::ng-deep .p-timeline .p-timeline-event-marker {
+  background-color: #1e9895 !important;
+  border-color: #1e9895 !important;
 }
