@@ -20,7 +20,7 @@ export class PChartLineComponent implements OnInit {
           label: '',
           data: [65, 59, 80, 81, 56, 55, 40],
           fill: false,
-          borderColor: '#42A5F5',
+          borderColor: '#57b2b0',
           tension: 0.4,
         },
       ],
@@ -28,9 +28,7 @@ export class PChartLineComponent implements OnInit {
     this.basicOptions = {
       plugins: {
         legend: {
-          labels: {
-            color: '#495057',
-          },
+          display: false,
         },
       },
       scales: {
