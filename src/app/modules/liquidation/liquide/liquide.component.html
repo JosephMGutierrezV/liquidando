@@ -106,7 +106,29 @@
     <div class="col-6">
       <p>Liquidaciones en lote</p>
       <div class="card border-rounded shadow-sm">
-        <div class="card-body"></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4 text-center">
+              <button type="button" class="btn btn-success">
+                Descargar Plantilla
+              </button>
+            </div>
+            <div class="col-8">
+              <p class="text-help-plantilla">
+                Recuerde que para realizar la carga masiva de Liquidaciones,
+                debes descargar primero la plantilla y contar con la informacion
+                organizada de acuerdo al formato
+              </p>
+            </div>
+            <div class="col-12 mb-5">
+              <app-drag-drop-file-upload></app-drag-drop-file-upload>
+            </div>
+            <div class="col-12 text-center">
+              <button type="button" class="btn btn-success">Validar</button>
+              <button type="button" class="btn btn-success">Calcular</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

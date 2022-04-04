@@ -1,5 +1,6 @@
 import { QuestionComponent } from './question/question.component';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { PGridComponent } from './p-grid/p-grid.component';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,6 +20,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { CalendarModule } from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 import { DragDropFileUploadComponent } from './drag-drop-file-upload/drag-drop-file-upload.component';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { DragDropFileUploadComponent } from './drag-drop-file-upload/drag-drop-f
     ChartModule,
     CalendarModule,
     FormsModule,
+    FileUploadModule,
+    HttpClientModule,
   ],
   exports: [
     PGridComponent,

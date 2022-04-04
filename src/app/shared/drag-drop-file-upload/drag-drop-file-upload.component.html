@@ -1,1 +1,15 @@
-<p>drag-drop-file-upload works!</p>
+<p-fileUpload
+  name="file[]"
+  (onUpload)="onUpload($event)"
+  [cancelLabel]="'Cancelar'"
+  [chooseLabel]="'Seleccionar'"
+  [uploadLabel]="'Cargar'"
+>
+  <ng-template pTemplate="content">
+    <ul *ngIf="uploadedFiles.length">
+      <li *ngFor="let file of uploadedFiles">
+        {{ file.name }} - {{ file.size }} bytes
+      </li>
+    </ul>
+  </ng-template>
+</p-fileUpload>

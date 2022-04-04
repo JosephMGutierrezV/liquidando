@@ -1,10 +1,11 @@
+$widthSidebar: 100px;
 /* Sidebar */
 .sidebar {
   height: 100%;
   background: #ffffff;
   font-family: "Poppins", sans-serif;
   padding: 0;
-  width: 100px;
+  width: $widthSidebar;
   z-index: 11;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
@@ -42,4 +43,8 @@
 
 ul {
   position: fixed;
+}
+
+li {
+  width: $widthSidebar;
 }
