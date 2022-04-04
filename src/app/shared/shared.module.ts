@@ -15,6 +15,10 @@ import { PChartLineComponent } from './p-chart-line/p-chart-line.component';
 import { ChartModule } from 'primeng/chart';
 import { IndicatorComponent } from './indicator/indicator.component';
 import { NewsComponent } from './news/news.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { CalendarModule } from 'primeng/calendar';
+import { FormsModule } from '@angular/forms';
+import { DragDropFileUploadComponent } from './drag-drop-file-upload/drag-drop-file-upload.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,8 @@ import { NewsComponent } from './news/news.component';
     PChartLineComponent,
     IndicatorComponent,
     NewsComponent,
+    DatePickerComponent,
+    DragDropFileUploadComponent,
   ],
   imports: [
     RouterModule,
@@ -36,6 +42,8 @@ import { NewsComponent } from './news/news.component';
     NgbCollapseModule,
     TimelineModule,
     ChartModule,
+    CalendarModule,
+    FormsModule,
   ],
   exports: [
     PGridComponent,
@@ -48,6 +56,8 @@ import { NewsComponent } from './news/news.component';
     PChartLineComponent,
     IndicatorComponent,
     NewsComponent,
+    DatePickerComponent,
+    DragDropFileUploadComponent,
   ],
 })
 export class SharedModule {}

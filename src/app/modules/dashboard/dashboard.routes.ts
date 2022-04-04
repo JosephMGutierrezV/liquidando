@@ -7,4 +7,6 @@ export const dashboardRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'liquidate', component: LiquideComponent },
   { path: 'record', component: HistoricalComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];

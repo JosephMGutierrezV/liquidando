@@ -11,7 +11,7 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
-  font-size: 0.75rem;
+  font-size: 0.75rem !important;
   font-weight: 200;
   line-height: 1.5;
   text-align: left;
@@ -43,6 +43,10 @@ html {
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+  -webkit-transition: width 0.25s ease, margin 0.25s ease;
+  -moz-transition: width 0.25s ease, margin 0.25s ease;
+  -ms-transition: width 0.25s ease, margin 0.25s ease;
+  -o-transition: width 0.25s ease, margin 0.25s ease;
 }
 @media (max-width: 991px) {
   .main-panel {

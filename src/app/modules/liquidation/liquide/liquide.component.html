@@ -1,1 +1,113 @@
-<p>liquide works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h5>Liquide</h5>
+      <hr />
+    </div>
+    <div class="col-6">
+      <p>Calcule el interes de sus procesos y genere reporte</p>
+      <div class="card border-rounded shadow-sm">
+        <div class="card-body">
+          <div class="border-bottom pb-3">
+            <app-time-line></app-time-line>
+            <app-steps-liquide></app-steps-liquide>
+            <app-steps-buttons></app-steps-buttons>
+          </div>
+          <form class="mt-3">
+            <div class="row">
+              <div class="col-6 mb-2">
+                <label for="capital" class="form-label"
+                  >Valor capital inicial</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="capital"
+                  aria-describedby="capital"
+                />
+              </div>
+              <div class="col-3 mt-1 mb-2">
+                <app-date-picker [textLabel]="'Inicio'"></app-date-picker>
+              </div>
+              <div class="col-3 mt-1 mb-2">
+                <app-date-picker [textLabel]="'final'"></app-date-picker>
+              </div>
+              <div class="col-6 mb-2">
+                <label for="capital" class="form-label"
+                  >Capitales Adicionales</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="capital"
+                  aria-describedby="capital"
+                />
+              </div>
+              <div class="col-3 mb-2">
+                <label for="capital" class="form-label"> Abonos</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="capital"
+                  aria-describedby="capital"
+                />
+              </div>
+              <div class="col-3 mb-2">
+                <label for="capital" class="form-label"
+                  >Valor capital inicial</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="capital"
+                  aria-describedby="capital"
+                />
+              </div>
+              <div class="col-12 mb-2">Seleccione la tasa a aplicar</div>
+              <div class="col-12 mb-4">
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    value="option1"
+                  />
+                  <label class="form-check-label"
+                    >Bancaria corriente mensual</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    value="option2"
+                  />
+                  <label class="form-check-label">Usura mensual</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    value="option3"
+                  />
+                  <label class="form-check-label">IPC</label>
+                </div>
+              </div>
+              <div class="col-12 text-center">
+                <button type="button" class="btn btn-success">Calcular</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <p>Liquidaciones en lote</p>
+      <div class="card border-rounded shadow-sm">
+        <div class="card-body"></div>
+      </div>
+    </div>
+  </div>
+</div>
