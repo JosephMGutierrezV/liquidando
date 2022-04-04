@@ -21,6 +21,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 import { DragDropFileUploadComponent } from './drag-drop-file-upload/drag-drop-file-upload.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { TableModule } from 'primeng/table';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     FormsModule,
     FileUploadModule,
     HttpClientModule,
+    TableModule,
+    CheckboxModule,
   ],
   exports: [
     PGridComponent,

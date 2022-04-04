@@ -1,0 +1,10 @@
+.p-input-icon-left > i,
+.p-input-icon-right > i {
+  top: 40% !important;
+  left: 85% !important;
+}
+
+:host ::ng-deep .p-button.p-button-outlined {
+  background-color: transparent !important;
+  color: #1e9895 !important;
+}
