@@ -3,3 +3,18 @@
 fa-icon {
   cursor: pointer;
 }
+
+app-dashboard {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-size: 0.85rem !important;
+  font-weight: 200;
+  line-height: 1.5;
+  text-align: left;
+  background-color: #fff;
+}
