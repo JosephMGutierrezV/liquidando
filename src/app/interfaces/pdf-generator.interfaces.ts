@@ -4,12 +4,12 @@ export interface IInformationPdfGenerator {
   dataForm: IDataFrom;
 }
 
-interface IDataGrid {
-  columns: string[];
+export interface IDataGrid {
+  columns: IColumn[];
   rows: any[];
 }
 
-interface IDataFrom {
+export interface IDataFrom {
   demandante: string;
   demandado: string;
   radicado: string;
@@ -19,4 +19,10 @@ interface IDataFrom {
   granTotal: string;
   fechaInicial: string;
   fechaFinal: string;
+}
+
+export interface IColumn {
+  format: string;
+  dataKey: string;
+  width: number;
 }
