@@ -96,7 +96,7 @@
     .container-img {
       position: relative;
     }
-    img{
+    img {
       position: absolute;
       left: 320px;
     }
@@ -216,21 +216,19 @@
               </tr>
             </thead>
             <tbody>
-              {{#abonos}}
+              {{#dataGridAbono}}
               <tr>
                 <td>{{date}}</td>
                 <td>{{abono}}</td>
                 <td>{{capitalizacion}}</td>
               </tr>
-              {{/abonos}}
+              {{/dataGridAbono}}
             </tbody>
           </table>
         </div>
-
         <div class="titleContainer">
           <h2>{{text.titleInteres}}</h2>
         </div>
-
         <div class="tableContainer-interes">
           <table>
             <colgroup>
@@ -250,7 +248,7 @@
               </tr>
             </thead>
             <tbody>
-              {{#interesProceso}}
+              {{#dataGridIntereses}}
               <tr>
                 <td>{{date}}</td>
                 <td>{{tasa}}</td>
@@ -258,11 +256,10 @@
                 <td>{{capital}}</td>
                 <td>{{total}}</td>
               </tr>
-              {{/interesProceso}}
+              {{/dataGridIntereses}}
             </tbody>
           </table>
         </div>
-
         <div class="container-img">
           <img src="../../images/liquidando2.png" alt="logo" width="100px" />
         </div>

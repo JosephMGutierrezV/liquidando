@@ -1,28 +1,53 @@
 export interface IInformationPdfGenerator {
-  dataGridIntereses: IDataGrid;
-  dataGridAbono: IDataGrid;
-  dataForm: IDataFrom;
+  fileName: string;
+  value: IDataFrom;
+  text: ITextReprot;
+  dataGridAbono: Array<IDataGridAbono>;
+  dataGridIntereses: Array<IDataGridIntereses>;
 }
 
-export interface IDataGrid {
-  columns: IColumn[];
-  rows: any[];
+export interface IDataGridIntereses {
+  date: string;
+  tasa: string;
+  intereses: string;
+  capital: string;
+  total: string;
 }
 
+export interface IDataGridAbono {
+  date: string;
+  abono: string;
+  capitalizacion: string;
+}
+export interface ITextReprot {
+  demandante: string;
+  demandado: string;
+  radicado: string;
+  juzgado: string;
+  interesesTotal: string;
+  capital: string;
+  totalGran: string;
+  initialDate: string;
+  finalDate: string;
+  titleAbonos: string;
+  tasaInteres: string;
+  date: string;
+  abono: string;
+  capitalizacion: string;
+  titleInteres: string;
+  tasa: string;
+  intereses: string;
+  total: string;
+}
 export interface IDataFrom {
   demandante: string;
   demandado: string;
   radicado: string;
   juzgado: string;
-  totalInteres: string;
+  intereses: string;
   capital: string;
-  granTotal: string;
-  fechaInicial: string;
-  fechaFinal: string;
-}
-
-export interface IColumn {
-  format: string;
-  dataKey: string;
-  width: number;
+  total: string;
+  initialDate: string;
+  finalDate: string;
+  tasaInteres: string;
 }

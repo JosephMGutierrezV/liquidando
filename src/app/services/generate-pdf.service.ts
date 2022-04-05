@@ -1,12 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as fileSaver from 'file-saver';
 import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 import * as Mustache from 'mustache';
-import {
-  IColumn,
-  IInformationPdfGenerator,
-} from '../interfaces/pdf-generator.interfaces';
+import { IInformationPdfGenerator } from '../interfaces/pdf-generator.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -19,28 +16,40 @@ export class GeneratePdfService {
    * @param {string} template
    * @returns {Promise<void>}
    */
-  public generatePDF(information: IInformationPdfGenerator): Promise<boolean> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const template = await this.getTemplateHTMLReport();
-        const pdf = new jsPDF('l', 'pt');
-
-        const columnAbonosStyles = this.buildColumnStyle(
-          information.dataGridAbono.columns
-        );
-
-        const headerStyles = {
-          fillColor: [238, 238, 238],
-          textColor: [0, 0, 0],
-          fontSize: 7,
-          overflow: 'linebreak',
-        };
-
-        resolve(true);
-      } catch (error) {
-        throw error;
-      }
-    });
+  public async generatePDF(
+    information: IInformationPdfGenerator
+  ): Promise<boolean> {
+    try {
+      const template = await this.getTemplateHTMLReport();
+      const renderTemplate = Mustache.render(template!, information);
+      document.getElementById('report-liquide')!.innerHTML = renderTemplate;
+      const reportTemplate = document.getElementById('reportTemplate');
+      const doc = new jsPDF('p', 'pt', 'a1');
+      const options = { background: 'white', scale: 3 };
+      const canvas = await html2canvas(reportTemplate!, options);
+      document.getElementById('report-liquide')!.innerHTML = '';
+      const img = canvas.toDataURL('image/PNG');
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(
+        img,
+        'PNG',
+        bufferX,
+        bufferY,
+        pdfWidth,
+        pdfHeight,
+        undefined,
+        'FAST'
+      );
+      doc.save(`${information.fileName}.pdf`);
+      return true;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   private getTemplateHTMLReport() {
@@ -48,26 +57,5 @@ export class GeneratePdfService {
       .get('assets/templates/pdfs/pdfliquidando.html', { responseType: 'text' })
       .toPromise()
       .then((result) => result);
-  }
-
-  /**
-   * Estilo para columnas Numericas
-   * @param columns
-   */
-  private buildColumnStyle(columns: IColumn[]) {
-    const style: any = {};
-    columns.forEach((column: IColumn) => {
-      if (column.format === 'numeric') {
-        style[column.dataKey] =
-          column.format === 'numeric'
-            ? { halign: 'right' }
-            : { halign: 'left' };
-      }
-      style[column['dataKey']] =
-        column.width !== 0
-          ? { columnWidth: column.width }
-          : { columnWidth: 100 };
-    });
-    return style;
   }
 }
