@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
-import * as Mustache from 'mustache';
+const Mustache = require('mustache');
 import { IInformationPdfGenerator } from '../interfaces/pdf-generator.interfaces';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class GeneratePdfService {
       const template = await this.getTemplateHTMLReport();
       const renderTemplate = Mustache.render(template!, information);
       document.getElementById('report-liquide')!.innerHTML = renderTemplate;
-      const reportTemplate = document.getElementById('reportTemplate');
+      const reportTemplate = document.getElementById('report-liquide');
       const doc = new jsPDF('p', 'pt', 'a1');
       const options = { background: 'white', scale: 3 };
       const canvas = await html2canvas(reportTemplate!, options);
