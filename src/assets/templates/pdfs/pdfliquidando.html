@@ -1,8 +1,34 @@
 <section id="report-liquide">
-  <style></style>
+  <style>
+    .input {
+      border-radius: 25px;
+      border: none;
+    }
+    .input-total {
+      border-radius: 25px;
+      border: none;
+      background-color: #00a19a !important;
+      color: #ffffff;
+    }
+    .h2-tile {
+      color: #00a19a;
+    }
+    .input-container {
+      border-radius: 25px;
+      border: none;
+      background-color: #ffffff !important;
+    }
+    .label-container {
+      color: #ffffff !important;
+    }
+    .container-middle {
+      background-color: #00685e;
+      border-radius: 50px;
+    }
+  </style>
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mb-5">
         <form>
           <div class="row">
             <div class="form-group col-6">
@@ -11,7 +37,7 @@
                 disabled
                 value="{{ value.demandante }}"
                 type="text"
-                class="form-control"
+                class="form-control input"
                 id="demandante"
               />
             </div>
@@ -21,7 +47,7 @@
                 disabled
                 value="{{ value.intereses }}"
                 type="text"
-                class="form-control"
+                class="form-control input"
                 id="total-intereses"
               />
             </div>
@@ -31,7 +57,7 @@
                 disabled
                 value="{{ value.demandado }}"
                 type="text"
-                class="form-control"
+                class="form-control input"
                 id="demandado"
               />
             </div>
@@ -41,7 +67,7 @@
                 disabled
                 value="{{ value.capital }}"
                 type="text"
-                class="form-control"
+                class="form-control input"
                 id="capital"
               />
             </div>
@@ -51,7 +77,7 @@
                 disabled
                 value="{{ value.radicado }}"
                 type="text"
-                class="form-control"
+                class="form-control input"
                 id="radicado"
               />
             </div>
@@ -61,7 +87,7 @@
                 disabled
                 value="{{ value.total }}"
                 type="text"
-                class="form-control"
+                class="form-control input-total"
                 id="bigTotal"
               />
             </div>
@@ -71,53 +97,59 @@
                 disabled
                 value="{{ value.juzgado }}"
                 type="text"
-                class="form-control"
+                class="form-control input"
                 id="juzgado"
               />
             </div>
           </div>
         </form>
       </div>
-      <div class="col-12">
+      <div class="col-12 container-middle p-3 mb-5">
         <form>
           <div class="row">
             <div class="form-group col-4">
-              <label for="initial-date">{{ text.initialDate }}</label>
+              <label class="label-container" for="initial-date"
+                >{{ text.initialDate }}</label
+              >
               <input
                 disabled
                 value="{{ value.initialDate }}"
                 type="text"
-                class="form-control"
+                class="form-control input-container"
                 id="initial-date"
               />
             </div>
             <div class="form-group col-4">
-              <label for="final-date">{{ text.finalDate }}</label>
+              <label class="label-container" for="final-date"
+                >{{ text.finalDate }}</label
+              >
               <input
                 disabled
                 value="{{ value.finalDate }}"
                 type="text"
-                class="form-control"
+                class="form-control input-container"
                 id="final-date"
               />
             </div>
             <div class="form-group col-4">
-              <label for="tasa-interes">{{ text.tasaInteres }}</label>
+              <label class="label-container" for="tasa-interes"
+                >{{ text.tasaInteres }}</label
+              >
               <input
                 disabled
                 value="{{ value.tasaInteres }}"
                 type="text"
-                class="form-control"
+                class="form-control input-container"
                 id="tasa-interes"
               />
             </div>
           </div>
         </form>
       </div>
-      <div class="col-12 text-center">
-        <h2>{{ text.titleAbonos }}</h2>
+      <div class="col-12 text-center mb-5">
+        <h2 class="h2-tile">{{ text.titleAbonos }}</h2>
       </div>
-      <div class="col-12">
+      <div class="col-12 mb-3">
         <table class="table">
           <thead>
             <tr>
@@ -129,7 +161,7 @@
           <tbody>
             {{#dataGridAbono}}
             <tr>
-              <th scope="row">{{ date }}</th>
+              <td>{{ date }}</td>
               <td>{{ abono }}</td>
               <td>{{ capitalizacion }}</td>
             </tr>
@@ -137,10 +169,10 @@
           </tbody>
         </table>
       </div>
-      <div class="col-12 text-center">
-        <h2>{{ text.titleInteres }}</h2>
+      <div class="col-12 text-center mb-5">
+        <h2 class="h2-tile">{{ text.titleInteres }}</h2>
       </div>
-      <div class="col-12">
+      <div class="col-12 mb-3">
         <table class="table">
           <thead>
             <tr>
@@ -154,7 +186,7 @@
           <tbody>
             {{#dataGridIntereses}}
             <tr>
-              <th scope="row">{{ date }}</th>
+              <td>{{ date }}</td>
               <td>{{ tasa }}</td>
               <td>{{ intereses }}</td>
               <td>{{ capital }}</td>
@@ -164,7 +196,7 @@
           </tbody>
         </table>
       </div>
-      <div class="col-12 text-right">
+      <div class="col-12 text-right mb-5">
         <img src="assets/images/liquidando2.png" alt="logo" width="100px" />
       </div>
     </div>
