@@ -1,269 +1,172 @@
 <section id="report-liquide">
-  <style>
-    .form-data {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      width: 100%;
-      margin-bottom: 2rem;
-    }
-    .form-data-left {
-      display: flex;
-      flex-direction: column;
-    }
-    .form-data-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .dates {
-      border-radius: 100px;
-      padding-top: 2rem;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      background-color: #00685e;
-      color: #ffffff;
-      height: 50px;
-      width: 850px;
-    }
-    div {
-      margin-bottom: 2rem;
-    }
-    label {
-      margin-bottom: 0.75rem;
-      margin-right: 00.75rem;
-    }
-    input {
-      background-color: #f6f6f6;
-      margin-bottom: 0.75rem;
-      border-radius: 25px;
-      width: 200px;
-      height: 30px;
-      border: none;
-    }
-    .input-total {
-      background-color: #00a19a;
-      color: #ffffff;
-    }
-    .container-dates {
-      display: flex;
-      flex-direction: column;
-    }
-    .mainSection {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .input-dates {
-      background-color: #ffffff;
-    }
-    .titleContainer {
-      text-align: center;
-      color: #00a19a;
-    }
-    .tableContainer {
-      width: 850px;
-    }
-    .tableContainer-interes {
-      width: 850px;
-      background-color: #f6f6f6;
-      border-radius: 15px;
-    }
-    th {
-      height: 35px;
-      text-align: center;
-      border-bottom: 1px solid;
-      border-right: 1px solid #cdcdcd;
-    }
-    td {
-      height: 35px;
-      text-align: center;
-      border-right: 1px solid #cdcdcd;
-      border-top: 1px solid #cdcdcd;
-      border-bottom: 1px solid #cdcdcd;
-    }
-    tr td:last-child {
-      border-right: none;
-    }
-    tr th:last-child {
-      border-right: none;
-    }
-    .container-img {
-      position: relative;
-    }
-    img {
-      position: absolute;
-      left: 320px;
-    }
-  </style>
-  <section class="container">
-    <main>
-      <section class="mainSection">
-        <section class="form-data">
-          <div class="form-data-left">
-            <label for="demandante">{{text.demandante}}</label>
-            <input
-              disabled
-              id="demandante"
-              type="text"
-              value="{{value.demandante}}"
-            />
-            <label for="demandado">{{text.demandado}}</label>
-            <input
-              disabled
-              id="demandado"
-              type="text"
-              value="{{value.demandado}}"
-            />
-            <label for="radicado">{{text.radicado}}</label>
-            <input
-              disabled
-              id="radicado"
-              type="text"
-              value="{{value.radicado}}"
-            />
-            <label for="juzgado">{{text.juzgado}}</label>
-            <input
-              disabled
-              id="juzgado"
-              type="text"
-              value="{{value.juzgado}}"
-            />
-          </div>
-          <div class="form-data-right">
-            <div>
-              <label for="total-intereses">{{text.interesesTotal}}</label>
+  <style></style>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form>
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="demandante">{{ text.demandante }}</label>
               <input
                 disabled
+                value="{{ value.demandante }}"
+                type="text"
+                class="form-control"
+                id="demandante"
+              />
+            </div>
+            <div class="form-group col-6">
+              <label for="total-intereses">{{ text.interesesTotal }}</label>
+              <input
+                disabled
+                value="{{ value.intereses }}"
+                type="text"
+                class="form-control"
                 id="total-intereses"
-                type="text"
-                value="{{value.intereses}}"
               />
             </div>
-            <div>
-              <label for="capital">{{text.capital}}</label>
+            <div class="form-group col-6">
+              <label for="demandado">{{ text.demandado }}</label>
               <input
                 disabled
+                value="{{ value.demandado }}"
+                type="text"
+                class="form-control"
+                id="demandado"
+              />
+            </div>
+            <div class="form-group col-6">
+              <label for="capital">{{ text.capital }}</label>
+              <input
+                disabled
+                value="{{ value.capital }}"
+                type="text"
+                class="form-control"
                 id="capital"
-                type="text"
-                value="{{value.capital}}"
               />
             </div>
-            <div>
-              <label for="total">{{text.totalGran}}</label>
+            <div class="form-group col-6">
+              <label for="radicado">{{ text.radicado }}</label>
               <input
-                class="input-total"
                 disabled
-                id="total"
+                value="{{ value.radicado }}"
                 type="text"
-                value="{{value.total}}"
+                class="form-control"
+                id="radicado"
+              />
+            </div>
+            <div class="form-group col-6">
+              <label for="bigTotal">{{ text.totalGran }}</label>
+              <input
+                disabled
+                value="{{ value.total }}"
+                type="text"
+                class="form-control"
+                id="bigTotal"
+              />
+            </div>
+            <div class="form-group col-6">
+              <label for="juzgado">{{ text.juzgado }}</label>
+              <input
+                disabled
+                value="{{ value.juzgado }}"
+                type="text"
+                class="form-control"
+                id="juzgado"
               />
             </div>
           </div>
-        </section>
-        <section class="dates">
-          <div class="container-dates">
-            <label for="initial-date">{{text.initialDate}}</label>
-            <input
-              class="input-dates"
-              disabled
-              id="initial-date"
-              type="text"
-              value="{{value.initialDate}}"
-            />
+        </form>
+      </div>
+      <div class="col-12">
+        <form>
+          <div class="row">
+            <div class="form-group col-4">
+              <label for="initial-date">{{ text.initialDate }}</label>
+              <input
+                disabled
+                value="{{ value.initialDate }}"
+                type="text"
+                class="form-control"
+                id="initial-date"
+              />
+            </div>
+            <div class="form-group col-4">
+              <label for="final-date">{{ text.finalDate }}</label>
+              <input
+                disabled
+                value="{{ value.finalDate }}"
+                type="text"
+                class="form-control"
+                id="final-date"
+              />
+            </div>
+            <div class="form-group col-4">
+              <label for="tasa-interes">{{ text.tasaInteres }}</label>
+              <input
+                disabled
+                value="{{ value.tasaInteres }}"
+                type="text"
+                class="form-control"
+                id="tasa-interes"
+              />
+            </div>
           </div>
-          <div class="container-dates">
-            <label for="final-date">{{text.finalDate}}</label>
-            <input
-              class="input-dates"
-              disabled
-              id="final-date"
-              type="text"
-              value="{{value.finalDate}}"
-            />
-          </div>
-          <div class="container-dates">
-            <label for="tasa-interes">{{text.tasaInteres}}</label>
-            <input
-              class="input-dates"
-              disabled
-              id="tasa-interes"
-              type="text"
-              value="{{value.tasaInteres}}"
-            />
-          </div>
-        </section>
-        <div class="titleContainer">
-          <h2>{{text.titleAbonos}}</h2>
-        </div>
-        <div class="tableContainer">
-          <table>
-            <colgroup>
-              <col style="width: 50em" />
-              <col style="width: 50em" />
-              <col style="width: 50em" />
-            </colgroup>
-            <thead>
-              <tr>
-                <th>{{text.date}}</th>
-                <th>{{text.abono}}</th>
-                <th>{{text.capitalizacion}}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#dataGridAbono}}
-              <tr>
-                <td>{{date}}</td>
-                <td>{{abono}}</td>
-                <td>{{capitalizacion}}</td>
-              </tr>
-              {{/dataGridAbono}}
-            </tbody>
-          </table>
-        </div>
-        <div class="titleContainer">
-          <h2>{{text.titleInteres}}</h2>
-        </div>
-        <div class="tableContainer-interes">
-          <table>
-            <colgroup>
-              <col style="width: 50em" />
-              <col style="width: 50em" />
-              <col style="width: 50em" />
-              <col style="width: 50em" />
-              <col style="width: 50em" />
-            </colgroup>
-            <thead>
-              <tr>
-                <th>{{text.date}}</th>
-                <th>{{text.tasa}}</th>
-                <th>{{text.intereses}}</th>
-                <th>{{text.capital}}</th>
-                <th>{{text.total}}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#dataGridIntereses}}
-              <tr>
-                <td>{{date}}</td>
-                <td>{{tasa}}</td>
-                <td>{{intereses}}</td>
-                <td>{{capital}}</td>
-                <td>{{total}}</td>
-              </tr>
-              {{/dataGridIntereses}}
-            </tbody>
-          </table>
-        </div>
-        <div class="container-img">
-          <img src="../../images/liquidando2.png" alt="logo" width="100px" />
-        </div>
-      </section>
-    </main>
-  </section>
+        </form>
+      </div>
+      <div class="col-12 text-center">
+        <h2>{{ text.titleAbonos }}</h2>
+      </div>
+      <div class="col-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">{{ text.date }}</th>
+              <th scope="col">{{ text.abono }}</th>
+              <th scope="col">{{ text.capitalizacion }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#dataGridAbono}}
+            <tr>
+              <th scope="row">{{ date }}</th>
+              <td>{{ abono }}</td>
+              <td>{{ capitalizacion }}</td>
+            </tr>
+            {{/dataGridAbono}}
+          </tbody>
+        </table>
+      </div>
+      <div class="col-12 text-center">
+        <h2>{{ text.titleInteres }}</h2>
+      </div>
+      <div class="col-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">{{ text.date }}</th>
+              <th scope="col">{{ text.tasa }}</th>
+              <th scope="col">{{ text.intereses }}</th>
+              <th scope="col">{{ text.capital }}</th>
+              <th scope="col">{{ text.total }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#dataGridIntereses}}
+            <tr>
+              <th scope="row">{{ date }}</th>
+              <td>{{ tasa }}</td>
+              <td>{{ intereses }}</td>
+              <td>{{ capital }}</td>
+              <td>{{ total }}</td>
+            </tr>
+            {{/dataGridIntereses}}
+          </tbody>
+        </table>
+      </div>
+      <div class="col-12 text-right">
+        <img src="assets/images/liquidando2.png" alt="logo" width="100px" />
+      </div>
+    </div>
+  </div>
 </section>
