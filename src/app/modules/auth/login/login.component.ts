@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  @Input() displayModal = false;
+  @Input() displayModalLogin = false;
 
   constructor() {}
 

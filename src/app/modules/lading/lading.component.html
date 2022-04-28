@@ -10,12 +10,18 @@
   <form class="form-inline">
     <button
       class="btn btn-sm btn-outline-secondary"
-      (click)="displayModal = !displayModal"
+      (click)="displayModalLogin = !displayModalLogin"
       type="button"
     >
       Login
     </button>
-    <button class="btn btn-outline-success" type="button">Registro</button>
+    <button
+      class="btn btn-outline-success"
+      type="button"
+      (click)="displayModalRegister = !displayModalRegister"
+    >
+      Registro
+    </button>
   </form>
 </nav>
 
@@ -460,4 +466,5 @@
   </div>
 </section>
 
-<app-login [displayModal]="displayModal"></app-login>
+<app-login [displayModalLogin]="displayModalLogin"></app-login>
+<app-register [displayModalRegister]="displayModalRegister"></app-register>

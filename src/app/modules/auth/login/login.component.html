@@ -1,5 +1,5 @@
 <p-dialog
-  [(visible)]="displayModal"
+  [(visible)]="displayModalLogin"
   [modal]="true"
   [style]="{ width: '30vw' }"
   [draggable]="false"
@@ -14,7 +14,7 @@
     />
   </p-header>
   <form class="p-3">
-    <div class="form-group mb-5">
+    <div class="form-group mb-3">
       <label for="inputEmail1">Email</label>
       <input
         type="email"
@@ -32,7 +32,7 @@
         placeholder="Ingrese su Contraseña"
       />
     </div>
-    <div class="form-check mb-5">
+    <div class="form-check mb-3">
       <input type="checkbox" class="form-check-input" id="exampleCheck1" />
       <label class="form-check-label" for="exampleCheck1"
         >Mostrar Contraseña</label
