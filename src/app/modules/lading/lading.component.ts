@@ -14,6 +14,7 @@ export class LadingComponent implements OnInit {
   public faArrowCircleDown = faArrowCircleDown;
   public faPlayCircle = faPlayCircle;
   public faLaughs = faLaugh;
+  public displayModal = false;
 
   constructor() {}
 
