@@ -1,4 +1,6 @@
+import { AppState } from './../../../store/app.reducer';
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   @Input() displayModalLogin = false;
 
-  constructor() {}
+  public subscriptions: any[] = [];
+
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  }
 }
