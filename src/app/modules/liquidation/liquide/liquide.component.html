@@ -11,15 +11,27 @@
           <form class="mt-3">
             <div class="row">
               <div class="col-6 mb-2">
-                <label for="capital" class="form-label"
-                  >Valor capital inicial</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="capital"
-                  aria-describedby="capital"
-                />
+                <label for="numeroRadico" class="form-label">Radicado del Proceso</label>
+                <input type="text" class="form-control" id="numeroRadico" aria-describedby="capital" />
+              </div>
+              <div class="col-6 mb-2">
+                <label for="juzgado" class="form-label">Juzgado</label>
+                <input type="text" class="form-control" id="juzgado" aria-describedby="capital" />
+              </div>
+              <div class="col-12">
+                <p>Partes</p>
+              </div>
+              <div class="col-6 mb-2">
+                <label for="demandante" class="form-label">Demandante</label>
+                <input type="text" class="form-control" id="demandante" aria-describedby="capital" />
+              </div>
+              <div class="col-6 mb-2">
+                <label for="demandado" class="form-label">Demandado</label>
+                <input type="text" class="form-control" id="demandado" aria-describedby="capital" />
+              </div>
+              <div class="col-6 mb-2">
+                <label for="capital" class="form-label">Valor capital inicial</label>
+                <input type="text" class="form-control" id="capital" aria-describedby="capital" />
               </div>
               <div class="col-3 mt-2">
                 <label for="dateBegin" class="mr-3">Inicio</label>
@@ -30,76 +42,43 @@
                 <app-date-picker inputId="dateEnd"></app-date-picker>
               </div>
               <div class="col-6 mb-2">
-                <label for="capital" class="form-label"
-                  >Capitales Adicionales</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="capital"
-                  aria-describedby="capital"
-                />
+                <label for="capital" class="form-label">Capitales Adicionales</label>
+                <input type="text" class="form-control" id="capital" aria-describedby="capital" />
               </div>
               <div class="col-3 mb-2">
                 <label for="capital" class="form-label"> Abonos</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="capital"
-                  aria-describedby="capital"
-                />
+                <input type="text" class="form-control" id="capital" aria-describedby="capital" />
               </div>
               <div class="col-3 mb-2">
-                <label for="capital" class="form-label"
-                  >Valor capital inicial</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="capital"
-                  aria-describedby="capital"
-                />
+                <label for="capital" class="form-label">Valor capital inicial</label>
+                <input type="text" class="form-control" id="capital" aria-describedby="capital" />
               </div>
               <div class="col-12 mb-2">Seleccione la tasa a aplicar</div>
-              <div class="col-12 mb-4">
+              <div class="col-12 mb-2">
                 <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    value="option1"
-                  />
-                  <label class="form-check-label"
-                    >Bancaria corriente mensual</label
-                  >
+                  <input (change)="onItemChange($event)" class="form-check-input" type="radio" name="radioOptionRate"
+                    value="option1" />
+                  <label class="form-check-label">Bancaria corriente mensual</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    value="option2"
-                  />
+                  <input (change)="onItemChange($event)" class="form-check-input" type="radio" name="radioOptionRate"
+                    value="option2" />
                   <label class="form-check-label">Usura mensual</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    value="option3"
-                  />
+                  <input (change)="onItemChange($event)" class="form-check-input" type="radio" name="radioOptionRate"
+                    value="option3" />
                   <label class="form-check-label">IPC</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    value="option4"
-                  />
-                  <label class="form-check-label">Otro</label>
+                  <input (change)="onItemChange($event)" class="form-check-input" type="radio" name="radioOptionRate"
+                    value="option4" />
+                  <label class="form-check-label">Otra</label>
                 </div>
+              </div>
+              <div class="col-12 mb-2" *ngIf="showInputOtherRate">
+                <label for="nuevaTasa" class="form-label">Valor Tasa</label>
+                <input type="text" class="form-control" id="nuevaTasa" aria-describedby="capital" />
               </div>
               <div class="col-12 text-center">
                 <button type="button" class="btn btn-success">Calcular</button>
@@ -120,18 +99,16 @@
             </div>
             <div class="form-group col-6">
               <label for="valorAbono">Monto de ingreso</label>
-              <input
-                type="text"
-                class="form-control"
-                id="valorAbono"
-                placeholder="monto"
-              />
+              <input type="text" class="form-control" id="valorAbono" placeholder="Monto" />
             </div>
             <div class="col-12 text-right">
               <button type="button" class="btn btn-success">Agregar</button>
             </div>
             <div class="col-12">
               <hr />
+            </div>
+            <div class="col-12">
+              <app-p-table-basic></app-p-table-basic>
             </div>
           </div>
         </div>
@@ -143,25 +120,21 @@
           <p>Capitalizacion del cliente</p>
           <div class="row">
             <div class="col-6">
-              <label for="dateCapitalizacion" class="mr-3"
-                >Selecione fecha</label
-              >
+              <label for="dateCapitalizacion" class="mr-3">Selecione fecha</label>
               <app-date-picker inputId="dateCapitalizacion"></app-date-picker>
             </div>
             <div class="form-group col-6">
               <label for="valorCapitalizacion">Monto de ingreso</label>
-              <input
-                type="text"
-                class="form-control"
-                id="valorCapitalizacion"
-                placeholder="Monto"
-              />
+              <input type="text" class="form-control" id="valorCapitalizacion" placeholder="Monto" />
             </div>
             <div class="col-12 text-right">
               <button type="button" class="btn btn-success">Agregar</button>
             </div>
             <div class="col-12">
               <hr />
+            </div>
+            <div class="col-12">
+              <app-p-table-basic></app-p-table-basic>
             </div>
           </div>
         </div>

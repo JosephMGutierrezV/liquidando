@@ -23,6 +23,7 @@ import { DragDropFileUploadComponent } from './drag-drop-file-upload/drag-drop-f
 import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
+import { PTableBasicComponent } from './p-table-basic/p-table-basic.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     NewsComponent,
     DatePickerComponent,
     DragDropFileUploadComponent,
+    PTableBasicComponent,
   ],
   imports: [
     RouterModule,
@@ -66,6 +68,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     NewsComponent,
     DatePickerComponent,
     DragDropFileUploadComponent,
+    PTableBasicComponent
   ],
 })
-export class SharedModule {}
+export class SharedModule { }

@@ -6,7 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liquide.component.scss'],
 })
 export class LiquideComponent implements OnInit {
-  constructor() {}
+  public showInputOtherRate = false;
 
-  ngOnInit(): void {}
+  constructor() { }
+
+  ngOnInit(): void { }
+
+  onItemChange(event: any) {
+    if (event.target.value === 'option4') {
+      this.showInputOtherRate = true;
+    } else {
+      this.showInputOtherRate = false;
+    }
+  }
 }

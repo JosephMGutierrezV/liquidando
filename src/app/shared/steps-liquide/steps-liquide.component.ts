@@ -10,8 +10,9 @@ import { Store } from '@ngrx/store';
 export class StepsLiquideComponent implements OnInit, OnDestroy {
   public currentStep = 1;
   public subscriptions: any[] = [];
+  public showInputRate: boolean = false;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -21,6 +22,14 @@ export class StepsLiquideComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  onChange(event: any) {
+    if (event.target.value === 'OTRA') {
+      this.showInputRate = true;
+    } else {
+      this.showInputRate = false;
+    }
   }
 
   ngOnDestroy(): void {

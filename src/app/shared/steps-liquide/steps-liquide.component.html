@@ -1,12 +1,7 @@
 <div class="mb-5" *ngIf="currentStep === 1">
   <label for="capital" class="form-label">Valor Capital Inicial</label>
-  <input
-    type="text"
-    class="form-control"
-    id="capital"
-    aria-describedby="capital"
-    placeholder="Ingrese el valor adecuado"
-  />
+  <input type="text" class="form-control" id="capital" aria-describedby="capital"
+    placeholder="Ingrese el valor adecuado" />
 </div>
 
 <div class="mb-5" *ngIf="currentStep === 2">
@@ -24,16 +19,19 @@
 </div>
 
 <div class="mb-5" *ngIf="currentStep === 3">
-  <div class="form-group">
-    <label for="tasaInput" class="mb-3"
-      >Seleccione la tasa que desea aplicar</label
-    >
-    <select class="form-control" id="tasaInput">
+  <div class="form-group mb-3">
+    <label for="tasaInput" class="mb-3">Seleccione la tasa que desea aplicar</label>
+    <select (change)="onChange($event)" class="form-control" id="tasaInput">
       <option>BC_MENSUAL</option>
       <option>IPC</option>
       <option>USURA_MEN</option>
       <option>OTRA</option>
     </select>
+  </div>
+  <div class="form-group" *ngIf="showInputRate">
+    <label for="rate" class="form-label">Valor Tasa</label>
+    <input type="text" class="form-control" id="rate" aria-describedby="rate"
+      placeholder="Ingrese el valor de la tasa" />
   </div>
 </div>
 
@@ -43,54 +41,24 @@
     <div class="row text-center">
       <div class="form-group col-4">
         <label for="staticAmount">Monto</label>
-        <input
-          type="text"
-          readonly
-          class="form-control-plaintext text-center"
-          id="staticAmount"
-          value="$1,000,000"
-        />
+        <input type="text" readonly class="form-control-plaintext text-center" id="staticAmount" value="$1,000,000" />
       </div>
       <div class="form-group col-4">
         <label for="staticDateEnd">Fecha Inicial</label>
-        <input
-          type="text"
-          readonly
-          class="form-control-plaintext text-center"
-          id="staticDateEnd"
-          value="01/01/2020"
-        />
+        <input type="text" readonly class="form-control-plaintext text-center" id="staticDateEnd" value="01/01/2020" />
       </div>
       <div class="form-group col-4">
         <label for="staticDateEnd">Fecha Final</label>
-        <input
-          type="text"
-          readonly
-          class="form-control-plaintext text-center"
-          id="staticDateEnd"
-          value="01/01/2021"
-        />
+        <input type="text" readonly class="form-control-plaintext text-center" id="staticDateEnd" value="01/01/2021" />
       </div>
       <div class="form-group col-12">
         <div class="row">
           <label for="staticTasa" class="col-4 text-center">Tasa</label>
           <div class="col-4">
-            <input
-              type="text"
-              readonly
-              class="form-control-plaintext text-center"
-              id="staticTasa"
-              value="IPC"
-            />
+            <input type="text" readonly class="form-control-plaintext text-center" id="staticTasa" value="IPC" />
           </div>
           <div class="col-4">
-            <input
-              type="text"
-              readonly
-              class="form-control-plaintext text-center"
-              id="staticTasa"
-              value="1%"
-            />
+            <input type="text" readonly class="form-control-plaintext text-center" id="staticTasa" value="1%" />
           </div>
         </div>
       </div>
