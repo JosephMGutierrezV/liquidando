@@ -11,6 +11,6 @@ export class TimeLineComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.events = ['Paso 1', 'Paso 2', 'Paso 3', 'Paso 4', ''];
+    this.events = ['Valor', 'Fechas', 'Tasa', 'Liquide', ''];
   }
 }
