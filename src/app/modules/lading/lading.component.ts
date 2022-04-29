@@ -1,9 +1,13 @@
+import { AppState } from './../../store/app.reducer';
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import {
   faLaugh,
   faArrowCircleDown,
   faPlayCircle,
 } from '@fortawesome/free-solid-svg-icons';
+
+import * as actions from '../../store/actions';
 
 @Component({
   selector: 'app-lading',
@@ -17,7 +21,7 @@ export class LadingComponent implements OnInit {
   public displayModalLogin = false;
   public displayModalRegister = false;
 
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {}
 }
