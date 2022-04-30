@@ -18,29 +18,30 @@ export class AppComponent implements OnInit, OnDestroy {
       this.store.select('ui').subscribe((ui) => {
         if (ui.isLoading) {
           Swal.fire({
-            title: 'Cargando...',
+            title: 'Espere por favor...',
             didOpen: () => {
               Swal.showLoading();
             },
             allowOutsideClick: false,
+            color: '#1e9895',
           });
         } else {
           Swal.close();
         }
         if (ui.error.message) {
           Swal.fire({
-            title: 'Error',
             text: ui.error.message,
             icon: 'error',
-            confirmButtonText: 'Ok',
+            confirmButtonText: 'Continuar',
+            confirmButtonColor: '#1e9895',
           });
         }
         if (ui.success.state) {
           Swal.fire({
-            title: 'Success',
             text: ui.success.message,
             icon: 'success',
-            confirmButtonText: 'Ok',
+            confirmButtonText: 'Continuar',
+            confirmButtonColor: '#1e9895',
           });
         }
       })
