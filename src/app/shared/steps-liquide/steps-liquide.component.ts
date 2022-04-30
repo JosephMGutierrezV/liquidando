@@ -1,25 +1,20 @@
 import { AppState } from './../../store/app.reducer';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-
+import * as actions from '../../store/actions';
 @Component({
   selector: 'app-steps-liquide',
   templateUrl: './steps-liquide.component.html',
   styleUrls: ['./steps-liquide.component.scss'],
 })
-export class StepsLiquideComponent implements OnInit, OnDestroy {
-  public currentStep: number = 0;
+export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
+  public currentStep: number = 1;
   public subscriptions: any[] = [];
   public showInputRate: boolean = false;
 
-  constructor(private store: Store<AppState>) {
-    this.currentStep = 1;
-  }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-
-    this.currentStep = 1;
-
     this.subscriptions.push(
       this.store.select('stepsFastLiquide').subscribe((state) => {
         if (state) {
@@ -27,6 +22,11 @@ export class StepsLiquideComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  ngAfterViewInit() {
+    this.currentStep = 1;
+    this.store.dispatch(actions.fastLiquide.resetSteps());
   }
 
   onChange(event: any) {

@@ -15,7 +15,8 @@ const _reducerFastLiquide = createReducer(
   on(fastLiquide.previousStep, (state, {}) => ({
     ...state,
     step: state.step - 1,
-  }))
+  })),
+  on(fastLiquide.resetSteps, (state, {}) => ({ ...state, step: 1 }))
 );
 
 export function reducerFastLiquide(state: any, action: any) {
