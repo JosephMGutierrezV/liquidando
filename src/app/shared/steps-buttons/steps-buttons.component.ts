@@ -8,12 +8,15 @@ import * as actions from './../../store/actions';
   styleUrls: ['./steps-buttons.component.scss'],
 })
 export class StepsButtonsComponent implements OnInit, OnDestroy {
-  public currentStep = 1;
+  public currentStep: number = 0;
   public subscriptions: any[] = [];
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+
+    this.currentStep = 1;
+
     this.subscriptions.push(
       this.store.select('stepsFastLiquide').subscribe((state) => {
         if (state) {

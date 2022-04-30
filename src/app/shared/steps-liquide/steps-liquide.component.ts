@@ -8,13 +8,18 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./steps-liquide.component.scss'],
 })
 export class StepsLiquideComponent implements OnInit, OnDestroy {
-  public currentStep = 1;
+  public currentStep: number = 0;
   public subscriptions: any[] = [];
   public showInputRate: boolean = false;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {
+    this.currentStep = 1;
+  }
 
   ngOnInit(): void {
+
+    this.currentStep = 1;
+
     this.subscriptions.push(
       this.store.select('stepsFastLiquide').subscribe((state) => {
         if (state) {

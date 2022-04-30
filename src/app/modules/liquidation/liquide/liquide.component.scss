@@ -6,11 +6,6 @@
   -o-border-radius: 1.2rem;
 }
 
-::ng-deep app-date-picker > p-calendar > span > button {
-  background-color: #57b2b0 !important;
-  border-color: #ffffff !important;
-}
-
 ::ng-deep .form-check-input:checked {
   background-color: #57b2b0 !important;
 }

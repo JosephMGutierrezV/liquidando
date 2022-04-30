@@ -1,10 +1,10 @@
-<p-timeline
-  [value]="events"
-  layout="horizontal"
-  align="bottom"
-  class="container-time-line"
->
+<p-timeline [value]="events" layout="horizontal" align="bottom" class="container-time-line">
+  <ng-template pTemplate="marker" let-event>
+    <span class="custom-marker shadow-2" [style.backgroundColor]="event.color">
+      <i [ngClass]="event.icon"></i>
+    </span>
+  </ng-template>
   <ng-template pTemplate="content" let-event>
-    {{ event }}
+    {{ event.value }}
   </ng-template>
 </p-timeline>
