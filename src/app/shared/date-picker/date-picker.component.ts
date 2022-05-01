@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-date-picker',
@@ -17,6 +18,7 @@ export class DatePickerComponent implements OnInit {
   ngOnInit(): void {}
 
   getData() {
-    this.returnDate.emit(this.date);
+    const dateFormated = moment(this.date).format('MM-DD-YYYY');
+    this.returnDate.emit(dateFormated);
   }
 }

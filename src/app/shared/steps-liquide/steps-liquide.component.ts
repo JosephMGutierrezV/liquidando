@@ -3,6 +3,8 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as actions from '../../store/actions';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-steps-liquide',
   templateUrl: './steps-liquide.component.html',
@@ -18,8 +20,8 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
   public tasasForm!: FormGroup;
   public confirmForm!: FormGroup;
 
-  public dateBegin: Date = new Date();
-  public dateEnd: Date = new Date();
+  public dateBegin: string = moment(new Date()).format('MM-DD-YYYY');
+  public dateEnd: string = moment(new Date()).format('MM-DD-YYYY');
 
   constructor(private store: Store<AppState>) {}
 
@@ -69,7 +71,22 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
         break;
       }
       case 2: {
-        this.store.dispatch(actions.fastLiquide.nextStep());
+        if (new Date(this.dateBegin) > new Date(this.dateEnd)) {
+          this.store.dispatch(
+            actions.ui.isError({
+              error: {
+                message: 'La fecha inicial no puede ser mayor a la fecha final',
+                code: 'FECHA_INICIAL_MAYOR_FECHA_FINAL',
+              },
+            })
+          );
+        } else {
+          this.confirmForm.patchValue({
+            fechaInicialConfirm: this.dateBegin,
+            fechaFinalConfirm: this.dateEnd,
+          });
+          this.store.dispatch(actions.fastLiquide.nextStep());
+        }
         break;
       }
 
@@ -118,6 +135,7 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
 
   setDateBegin(event: any) {
     this.dateBegin = event;
+    console.log(this.dateBegin);
   }
 
   setDataEnd(event: any) {
