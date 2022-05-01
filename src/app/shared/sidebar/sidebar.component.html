@@ -38,5 +38,17 @@
         </div>
       </a>
     </li>
+    <li class="nav-item border" (click)="logout()">
+      <a
+        routerLinkActive="active-route"
+        [ngClass]="{ 'active-route': clickExit }"
+        class="nav-link"
+      >
+        <div class="container-menu">
+          <fa-icon [icon]="faArrowAltCircleRight" size="lg"></fa-icon>
+          <p>Salir</p>
+        </div>
+      </a>
+    </li>
   </ul>
 </nav>

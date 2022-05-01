@@ -1,3 +1,4 @@
+import { logoutError } from './../actions/auth.actions';
 import { AppState } from './../app.reducer';
 import { Store } from '@ngrx/store';
 import { AuthService } from './../../services/auth.service';
@@ -171,6 +172,45 @@ export class AuthEffects {
               })
             )
           )
+        )
+      )
+    )
+  );
+
+  //TODO: Implementar servicio backend para logout
+  cerrarSession$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(authActions.logoutLoading),
+      tap(() => {
+        this.store.dispatch(ui.isNotLoading());
+        setTimeout(() => {
+          this.store.dispatch(ui.isLoading());
+        }, 10);
+      }),
+      map(() => authActions.logoutSuccess()),
+      tap((data) => {
+        if (data) {
+          this.router.navigate(['/login']);
+          setTimeout(() => {
+            this.store.dispatch(ui.isNotLoading());
+          }, 1000);
+        }
+      }),
+      catchError((error: any) =>
+        of(authActions.logoutError({ error })).pipe(
+          tap((error: any) => {
+            this.store.dispatch(ui.isNotLoading());
+            setTimeout(() => {
+              this.store.dispatch(
+                ui.isError({
+                  error: {
+                    message: error.error.message || 'Error al cerrar sesión',
+                    code: error.error.code || 'logout-error',
+                  },
+                })
+              );
+            }, 10);
+          })
         )
       )
     )
