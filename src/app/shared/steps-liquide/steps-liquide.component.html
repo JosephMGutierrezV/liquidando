@@ -40,7 +40,12 @@
       <label for="tasaInput" class="mb-3"
         >Seleccione la tasa que desea aplicar</label
       >
-      <select (change)="onChange($event)" class="form-select" id="tasaInput">
+      <select
+        formControlName="tasa"
+        (change)="onChange($event)"
+        class="form-select"
+        id="tasaInput"
+      >
         <option>BC_MENSUAL</option>
         <option>IPC</option>
         <option>USURA_MEN</option>
@@ -50,7 +55,8 @@
     <div class="form-group" *ngIf="showInputRate">
       <label for="rate" class="form-label">Valor Tasa</label>
       <input
-        type="text"
+        formControlName="tasaOtra"
+        type="number"
         class="form-control"
         id="rate"
         aria-describedby="rate"
@@ -101,6 +107,7 @@
           >
           <div class="col-4">
             <input
+              formControlName="tasaConfirm"
               type="text"
               readonly
               class="form-control-plaintext text-center"
@@ -110,6 +117,7 @@
           </div>
           <div class="col-4">
             <input
+              formControlName="tasaOtraConfirm"
               type="text"
               readonly
               class="form-control-plaintext text-center"

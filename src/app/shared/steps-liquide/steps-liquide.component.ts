@@ -91,7 +91,45 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
       }
 
       case 3: {
-        this.store.dispatch(actions.fastLiquide.nextStep());
+        if (this.tasasForm.valid) {
+          if (this.tasasForm.value.tasa === 'OTRA') {
+            if (
+              this.tasasForm.value.tasaOtra === '' ||
+              this.tasasForm.value.tasaOtra === 0
+            ) {
+              this.store.dispatch(
+                actions.ui.isError({
+                  error: {
+                    message: 'El valor de la tasa es requerida',
+                    code: 'TASA_REQUERIDA',
+                  },
+                })
+              );
+            } else {
+              this.confirmForm.patchValue({
+                tasaConfirm: this.tasasForm.value.tasa,
+                tasaOtraConfirm: this.tasasForm.value.tasaOtra,
+              });
+              this.store.dispatch(actions.fastLiquide.nextStep());
+            }
+          } else {
+            //TODO: Implementar el valor real de las tasas
+            this.confirmForm.patchValue({
+              tasaConfirm: this.tasasForm.value.tasa,
+              tasaOtraConfirm: 1,
+            });
+            this.store.dispatch(actions.fastLiquide.nextStep());
+          }
+        } else {
+          this.store.dispatch(
+            actions.ui.isError({
+              error: {
+                message: 'La tasa es requerida',
+                code: 'TASA_REQUERIDA',
+              },
+            })
+          );
+        }
         break;
       }
 
@@ -119,10 +157,7 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     this.tasasForm = new FormGroup({
       tasa: new FormControl('', [Validators.required]),
-      tasaOtra: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^[0-9]*$'),
-      ]),
+      tasaOtra: new FormControl('', [Validators.pattern('^[0-9]*$')]),
     });
     this.confirmForm = new FormGroup({
       monto: new FormControl('', [Validators.required]),
