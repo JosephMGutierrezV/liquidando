@@ -16,6 +16,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environment
 import { EffectsModule } from '@ngrx/effects';
 import { CanActivateGuard } from './guards/can-activate.guard';
+import { LeaveGuard } from './guards/leave.guard';
+import { LeaveLoginGuard } from './guards/leave-login.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,7 +47,7 @@ export class AppModule {
   static forRoot(): ModuleWithProviders<AuthModule> {
     return {
       ngModule: AppModule,
-      providers: [CanActivateGuard],
+      providers: [CanActivateGuard, LeaveGuard, LeaveLoginGuard],
     };
   }
 }

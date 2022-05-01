@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
-  CanActivate,
+  CanDeactivate,
   Router,
   RouterStateSnapshot,
   UrlTree,
@@ -10,27 +10,28 @@ import { select, Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { AppState } from '../store/app.reducer';
 
+export interface CanComponentDeactivate {
+  canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
+}
+
 @Injectable({
   providedIn: 'root',
 })
-export class CanActivateGuard implements CanActivate {
+export class LeaveGuard implements CanDeactivate<CanComponentDeactivate> {
   constructor(private store: Store<AppState>, private route: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  canDeactivate(
+    component: unknown,
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState?: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
     return this.store.pipe(
       select((state) => state.auth.token),
       map((resp) => {
-        if (resp !== '') {
+        if (resp === '') {
           return true;
         } else {
-          this.route.navigate(['/home']);
           return false;
         }
       })

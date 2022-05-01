@@ -13,7 +13,7 @@ import { AppState } from '../store/app.reducer';
 @Injectable({
   providedIn: 'root',
 })
-export class CanActivateGuard implements CanActivate {
+export class LeaveLoginGuard implements CanActivate {
   constructor(private store: Store<AppState>, private route: Router) {}
 
   canActivate(
@@ -27,10 +27,9 @@ export class CanActivateGuard implements CanActivate {
     return this.store.pipe(
       select((state) => state.auth.token),
       map((resp) => {
-        if (resp !== '') {
+        if (resp === '') {
           return true;
         } else {
-          this.route.navigate(['/home']);
           return false;
         }
       })

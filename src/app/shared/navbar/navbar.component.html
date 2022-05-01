@@ -4,22 +4,25 @@
   <div class="text-center d-flex align-items-center justify-content-start ms-5">
     <fa-icon (click)="toggle()" [icon]="faBars" size="lg"></fa-icon>
   </div>
-  <div class="text-center d-flex align-items-center justify-content-center ms-5">
+  <div
+    class="text-center d-flex align-items-center justify-content-center ms-5"
+  >
     <img width="25%" src="../assets/images/liquidando2.png" alt="logo" />
   </div>
   <div class="container-left d-flex align-items-center justify-content-between">
     <div class="me-5">
-      <fa-icon [icon]="faBell" size="lg"></fa-icon>
+      <!-- <fa-icon [icon]="faBell" size="lg"></fa-icon> -->
     </div>
     <div
       class="text-center me-5 profile d-flex justify-content-between align-items-lg-center"
     >
       <p class="me-2">Joseph Gutierrez</p>
-      <img
+      <fa-icon [icon]="faUserLock" size="lg"></fa-icon>
+      <!-- <img
         class="img-xs rounded-circle"
         src="assets/images/Face1.jpg"
         alt="imagen perfil"
-      />
+      /> -->
     </div>
   </div>
 </nav>
