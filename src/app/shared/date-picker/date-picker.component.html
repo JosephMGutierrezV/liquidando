@@ -1,2 +1,7 @@
 <label for="icon">{{ textLabel }}</label>
-<p-calendar [(ngModel)]="date" [showIcon]="true" inputId="icon"></p-calendar>
+<p-calendar
+  (onSelect)="getData()"
+  [(ngModel)]="date"
+  [showIcon]="true"
+  inputId="icon"
+></p-calendar>

@@ -11,14 +11,13 @@ import { RouterModule } from '@angular/router';
 import { TimeLineComponent } from './time-line/time-line.component';
 import { TimelineModule } from 'primeng/timeline';
 import { StepsLiquideComponent } from './steps-liquide/steps-liquide.component';
-import { StepsButtonsComponent } from './steps-buttons/steps-buttons.component';
 import { PChartLineComponent } from './p-chart-line/p-chart-line.component';
 import { ChartModule } from 'primeng/chart';
 import { IndicatorComponent } from './indicator/indicator.component';
 import { NewsComponent } from './news/news.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { CalendarModule } from 'primeng/calendar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragDropFileUploadComponent } from './drag-drop-file-upload/drag-drop-file-upload.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
@@ -33,7 +32,6 @@ import { PTableBasicComponent } from './p-table-basic/p-table-basic.component';
     SidebarComponent,
     TimeLineComponent,
     StepsLiquideComponent,
-    StepsButtonsComponent,
     PChartLineComponent,
     IndicatorComponent,
     NewsComponent,
@@ -44,6 +42,8 @@ import { PTableBasicComponent } from './p-table-basic/p-table-basic.component';
   imports: [
     RouterModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     NgbCollapseModule,
     TimelineModule,
@@ -62,13 +62,12 @@ import { PTableBasicComponent } from './p-table-basic/p-table-basic.component';
     SidebarComponent,
     TimeLineComponent,
     StepsLiquideComponent,
-    StepsButtonsComponent,
     PChartLineComponent,
     IndicatorComponent,
     NewsComponent,
     DatePickerComponent,
     DragDropFileUploadComponent,
-    PTableBasicComponent
+    PTableBasicComponent,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}

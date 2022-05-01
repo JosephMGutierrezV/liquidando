@@ -1,64 +1,121 @@
 <div class="mb-5" *ngIf="currentStep === 1">
-  <label for="capital" class="form-label">Valor Capital Inicial</label>
-  <input type="text" class="form-control" id="capital" aria-describedby="capital"
-    placeholder="Ingrese el valor adecuado" />
+  <form [formGroup]="capitalInicialForm">
+    <label for="capital" class="form-label">Valor Capital Inicial</label>
+    <input
+      formControlName="valorCapitalInicial"
+      type="number"
+      class="form-control"
+      id="capital"
+      aria-describedby="capital"
+      placeholder="Ingrese el valor adecuado"
+    />
+  </form>
 </div>
 
 <div class="mb-5" *ngIf="currentStep === 2">
   <p>Rango de fechas</p>
-  <div class="d-flex justify-content-between">
-    <div>
-      <label for="dateBegin" class="form-label me-3">Inicio</label>
-      <app-date-picker inputId="dateBegin"></app-date-picker>
+  <form [formGroup]="fechasForm">
+    <div class="d-flex justify-content-between">
+      <div>
+        <label for="dateBegin" class="form-label me-3">Inicio</label>
+        <app-date-picker
+          (returnDate)="setDateBegin($event)"
+          inputId="dateBegin"
+        ></app-date-picker>
+      </div>
+      <div>
+        <label for="dateEnd" class="form-label me-3">Final</label>
+        <app-date-picker
+          (returnDate)="setDataEnd($event)"
+          inputId="dateEnd"
+        ></app-date-picker>
+      </div>
     </div>
-    <div>
-      <label for="dateEnd" class="form-label me-3">Final</label>
-      <app-date-picker inputId="dateEnd"></app-date-picker>
-    </div>
-  </div>
+  </form>
 </div>
 
 <div class="mb-5" *ngIf="currentStep === 3">
-  <div class="form-group mb-3">
-    <label for="tasaInput" class="mb-3">Seleccione la tasa que desea aplicar</label>
-    <select (change)="onChange($event)" class="form-select" id="tasaInput">
-      <option>BC_MENSUAL</option>
-      <option>IPC</option>
-      <option>USURA_MEN</option>
-      <option>OTRA</option>
-    </select>
-  </div>
-  <div class="form-group" *ngIf="showInputRate">
-    <label for="rate" class="form-label">Valor Tasa</label>
-    <input type="text" class="form-control" id="rate" aria-describedby="rate"
-      placeholder="Ingrese el valor de la tasa" />
-  </div>
+  <form [formGroup]="tasasForm">
+    <div class="form-group mb-3">
+      <label for="tasaInput" class="mb-3"
+        >Seleccione la tasa que desea aplicar</label
+      >
+      <select (change)="onChange($event)" class="form-select" id="tasaInput">
+        <option>BC_MENSUAL</option>
+        <option>IPC</option>
+        <option>USURA_MEN</option>
+        <option>OTRA</option>
+      </select>
+    </div>
+    <div class="form-group" *ngIf="showInputRate">
+      <label for="rate" class="form-label">Valor Tasa</label>
+      <input
+        type="text"
+        class="form-control"
+        id="rate"
+        aria-describedby="rate"
+        placeholder="Ingrese el valor de la tasa"
+      />
+    </div>
+  </form>
 </div>
 
 <div class="mb-5" *ngIf="currentStep === 4">
   <p>Verifica si los datos son correctos</p>
-  <form>
+  <form [formGroup]="confirmForm">
     <div class="row text-center">
       <div class="form-group col-4">
         <label for="staticAmount" class="color-title">Monto</label>
-        <input type="text" readonly class="form-control-plaintext text-center" id="staticAmount" value="$1,000,000" />
+        <input
+          formControlName="monto"
+          type="text"
+          readonly
+          class="form-control-plaintext text-center"
+          id="staticAmount"
+        />
       </div>
       <div class="form-group col-4">
         <label for="staticDateEnd" class="color-title">Fecha Inicial</label>
-        <input type="text" readonly class="form-control-plaintext text-center" id="staticDateEnd" value="01/01/2020" />
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintext text-center"
+          id="staticDateEnd"
+          value="01/01/2020"
+        />
       </div>
       <div class="form-group col-4">
         <label for="staticDateEnd" class="color-title">Fecha Final</label>
-        <input type="text" readonly class="form-control-plaintext text-center" id="staticDateEnd" value="01/01/2021" />
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintext text-center"
+          id="staticDateEnd"
+          value="01/01/2021"
+        />
       </div>
       <div class="form-group col-12">
         <div class="row">
-          <label for="staticTasa" class="col-4 text-center color-title">Tasa</label>
+          <label for="staticTasa" class="col-4 text-center color-title"
+            >Tasa</label
+          >
           <div class="col-4">
-            <input type="text" readonly class="form-control-plaintext text-center" id="staticTasa" value="IPC" />
+            <input
+              type="text"
+              readonly
+              class="form-control-plaintext text-center"
+              id="staticTasa"
+              value="IPC"
+            />
           </div>
           <div class="col-4">
-            <input type="text" readonly class="form-control-plaintext text-center" id="staticTasa" value="1%" />
+            <input
+              type="text"
+              readonly
+              class="form-control-plaintext text-center"
+              id="staticTasa"
+              value="1%"
+            />
           </div>
         </div>
       </div>
@@ -74,4 +131,23 @@
       </div>
     </div>
   </form>
+</div>
+
+<div class="text-center">
+  <button
+    [hidden]="currentStep === 1"
+    (click)="previousStep()"
+    type="button"
+    class="btn btn-success me-3"
+  >
+    Anterior
+  </button>
+  <button
+    [hidden]="currentStep === 4"
+    (click)="nextStep()"
+    type="button"
+    class="btn btn-success me-3"
+  >
+    Siguiente
+  </button>
 </div>
