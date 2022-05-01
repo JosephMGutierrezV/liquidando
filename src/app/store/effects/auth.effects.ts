@@ -73,4 +73,106 @@ export class AuthEffects {
       )
     )
   );
+
+  registrarUsuario$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(authActions.registerUserLoading),
+      tap(() => {
+        this.store.dispatch(ui.isNotLoading());
+        setTimeout(() => {
+          this.store.dispatch(ui.isLoading());
+        }, 10);
+      }),
+      mergeMap(({ dataUser }) =>
+        this.authService.register(dataUser)!.pipe(
+          map((data) =>
+            authActions.registerUserSuccess({ response: data.data })
+          ),
+          tap((data: any) => {
+            if (data) {
+              switch (data.response) {
+                case 0: {
+                  this.store.dispatch(ui.isNotLoading());
+                  setTimeout(() => {
+                    this.store.dispatch(
+                      ui.isSuccess({
+                        success: {
+                          message:
+                            'Usuario registrado correctamente, porfavor inicie sesión',
+                          state: true,
+                        },
+                      })
+                    );
+                  }, 10);
+                  break;
+                }
+
+                case 1: {
+                  this.store.dispatch(ui.isNotLoading());
+                  setTimeout(() => {
+                    this.store.dispatch(
+                      ui.isError({
+                        error: {
+                          message: 'El correo ingresado ya esta registrado',
+                          code: 'register-error',
+                        },
+                      })
+                    );
+                  }, 10);
+                  break;
+                }
+
+                case 2: {
+                  this.store.dispatch(ui.isNotLoading());
+                  setTimeout(() => {
+                    this.store.dispatch(
+                      ui.isError({
+                        error: {
+                          message: 'Nombre de usuario ya ocupado',
+                          code: 'register-error',
+                        },
+                      })
+                    );
+                  }, 10);
+                  break;
+                }
+
+                default: {
+                  this.store.dispatch(ui.isNotLoading());
+                  setTimeout(() => {
+                    this.store.dispatch(
+                      ui.isError({
+                        error: {
+                          message: 'Error al registrar usuario',
+                          code: 'register-error',
+                        },
+                      })
+                    );
+                  }, 10);
+                  break;
+                }
+              }
+            }
+          }),
+          catchError((error: any) =>
+            of(authActions.registerUserError({ error })).pipe(
+              tap((error: any) => {
+                this.store.dispatch(ui.isNotLoading());
+                setTimeout(() => {
+                  this.store.dispatch(
+                    ui.isError({
+                      error: {
+                        message: error.error.message || 'Error al registrar',
+                        code: error.error.code || 'register-error',
+                      },
+                    })
+                  );
+                }, 10);
+              })
+            )
+          )
+        )
+      )
+    )
+  );
 }

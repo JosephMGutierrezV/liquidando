@@ -1,6 +1,5 @@
-import { IError } from './../reducer/ui.reducer';
 import { createAction, props } from '@ngrx/store';
-import { ISuccess } from '../reducer/ui.reducer';
+import { IError, ISuccess } from 'src/app/interfaces/responses.interfaces';
 
 export const isLoading = createAction('[UI] is loading');
 export const isNotLoading = createAction('[UI] is not loading');

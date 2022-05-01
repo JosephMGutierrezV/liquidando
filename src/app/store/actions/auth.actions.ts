@@ -1,5 +1,6 @@
+import { IRequestRegistro } from './../../interfaces/request.interfaces';
 import { createAction, props } from '@ngrx/store';
-import { IError } from '../reducer/ui.reducer';
+import { IError } from 'src/app/interfaces/responses.interfaces';
 
 export const loginLoading = createAction(
   '[Auth] Login Loading',
@@ -22,5 +23,20 @@ export const logoutSuccess = createAction('[Auth] Logout Success');
 
 export const logoutError = createAction(
   '[Auth] Logout Error',
+  props<{ error: IError }>()
+);
+
+export const registerUserLoading = createAction(
+  '[Auth] Register User Loading',
+  props<{ dataUser: IRequestRegistro }>()
+);
+
+export const registerUserSuccess = createAction(
+  '[Auth] Register User Success',
+  props<{ response: number }>()
+);
+
+export const registerUserError = createAction(
+  '[Auth] Register User Error',
   props<{ error: IError }>()
 );

@@ -1,19 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
+import { IError, ISuccess } from 'src/app/interfaces/responses.interfaces';
 import * as ui from '../actions/ui.actions';
 
 export interface StateUI {
   isLoading: boolean;
   error: IError;
   success: ISuccess;
-}
-
-export interface ISuccess {
-  message: string;
-  state: boolean;
-}
-export interface IError {
-  message: string;
-  code: string;
 }
 
 const initialState: StateUI = {
@@ -46,6 +38,7 @@ const _reducerUi = createReducer(
     ...state,
     error: error,
     isLoading: false,
+    success: { message: '', state: false },
   })),
   on(ui.isSuccess, (state, { success }) => ({
     ...state,

@@ -14,8 +14,7 @@ export class TimeLineComponent implements OnInit, OnDestroy {
   public defaultColor = '#ECECEC';
   public selectedColor = '#1e9895';
 
-  constructor(private store: Store<AppState>) { }
-
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -25,7 +24,9 @@ export class TimeLineComponent implements OnInit, OnDestroy {
             event.color = this.defaultColor;
             return event;
           });
-          this.events[state.step - 1].color = this.selectedColor;
+          this.events[state.step - 1]
+            ? (this.events[state.step - 1].color = this.selectedColor)
+            : null;
         }
       })
     );
@@ -35,7 +36,7 @@ export class TimeLineComponent implements OnInit, OnDestroy {
       { value: 'Fechas', color: this.defaultColor },
       { value: 'Tasa', color: this.defaultColor },
       { value: 'Liquide', color: this.defaultColor },
-      { value: '', color: this.defaultColor }
+      { value: '', color: this.defaultColor },
     ];
   }
 

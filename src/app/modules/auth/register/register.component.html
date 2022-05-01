@@ -13,37 +13,41 @@
       width="50%"
     />
   </p-header>
-  <form class="p-3">
+  <form [formGroup]="registerForm" class="p-3">
     <div class="form-group mb-3">
-      <label for="inputEmail1">Email</label>
+      <label for="inputRegisterEmail">Email</label>
       <input
+        formControlName="email"
         type="email"
         class="form-control"
-        id="inputEmail1"
+        id="inputRegisterEmail"
         placeholder="Ingrese su Correo"
       />
     </div>
     <div class="form-group mb-3">
-      <label for="inputPassword1">Contraseña</label>
+      <label for="inputPasswordRegister">Contraseña</label>
       <input
+        formControlName="password"
         type="password"
         class="form-control"
-        id="inputPassword1"
+        id="inputPasswordRegister"
         placeholder="Ingrese su Contraseña"
       />
     </div>
     <div class="form-group mb-3">
-      <label for="inputPassword1">Re-Contraseña</label>
+      <label for="inputPasswordConfirmRegister">Re-Contraseña</label>
       <input
+        formControlName="passwordConfirm"
         type="password"
         class="form-control"
-        id="inputPassword1"
+        id="inputPasswordConfirmRegister"
         placeholder="Confirme su Contraseña"
       />
     </div>
     <div class="form-group mb-3">
       <label for="inputName">Nombre</label>
       <input
+        formControlName="name"
         type="text"
         class="form-control"
         id="inputName"
@@ -51,15 +55,15 @@
       />
     </div>
     <div class="form-group mb-3">
-      <label for="inputState">Planes disponibles</label>
-      <select id="inputState" class="form-select">
+      <label for="typeUser">Planes disponibles</label>
+      <select formControlName="typeUser" id="typeUser" class="form-select">
         <option class="option">Prueba</option>
         <option class="option">Basico</option>
         <option class="option">Avanzado</option>
       </select>
     </div>
     <div class="d-flex justify-content-end">
-      <button type="submit" class="btn btn-success button-radius">
+      <button (click)="register()" type="button" class="btn btn-success button-radius">
         Registrarme
       </button>
     </div>
