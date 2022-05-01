@@ -8,15 +8,24 @@ import { Component, OnInit } from '@angular/core';
 export class LiquideComponent implements OnInit {
   public showInputOtherRate = false;
 
-  constructor() { }
+  public isHaveNumberSettled = true;
 
-  ngOnInit(): void { }
+  constructor() {}
+
+  ngOnInit(): void {}
 
   onItemChange(event: any) {
     if (event.target.value === 'option4') {
       this.showInputOtherRate = true;
     } else {
       this.showInputOtherRate = false;
+    }
+  }
+  onChangeSettled(event: any) {
+    if (event.target.value === '') {
+      this.isHaveNumberSettled = true;
+    } else {
+      this.isHaveNumberSettled = false;
     }
   }
 }

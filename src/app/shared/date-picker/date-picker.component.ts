@@ -8,6 +8,7 @@ import * as moment from 'moment';
 })
 export class DatePickerComponent implements OnInit {
   @Input() textLabel: string = '';
+  @Input() disabled: boolean = false;
 
   @Output() returnDate = new EventEmitter<any>();
 
