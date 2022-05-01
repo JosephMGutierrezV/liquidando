@@ -1,7 +1,7 @@
 import { EffectsArray } from './store/effects/index';
 import { HttpClientModule } from '@angular/common/http';
 import { appReducers } from './store/app.reducer';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environment
 import { EffectsModule } from '@ngrx/effects';
+import { CanActivateGuard } from './guards/can-activate.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,4 +41,11 @@ import { EffectsModule } from '@ngrx/effects';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  static forRoot(): ModuleWithProviders<AuthModule> {
+    return {
+      ngModule: AppModule,
+      providers: [CanActivateGuard],
+    };
+  }
+}
