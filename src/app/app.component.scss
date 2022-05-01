@@ -2,3 +2,6 @@
   border-color: #1e9895 transparent #1e9895 transparent !important;
 }
 
+::ng-deep .swal2-container {
+  z-index: 1126 !important;
+}
