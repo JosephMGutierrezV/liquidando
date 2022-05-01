@@ -21,17 +21,54 @@ export class AuthEffects {
   cargarLogin$ = createEffect(() =>
     this.actions$.pipe(
       ofType(authActions.loginLoading),
-      tap(() => this.store.dispatch(ui.isLoading())),
+      tap(() => {
+        this.store.dispatch(ui.isNotLoading());
+        setTimeout(() => {
+          this.store.dispatch(ui.isLoading());
+        }, 10);
+      }),
       mergeMap(({ psw, user }) =>
         this.authService.login(user, psw)!.pipe(
-          map((data) => authActions.loginSuccess({ token: data })),
-          tap(() => {
-            ui.isLoading();
-            this.router.navigate(['/dashboard/home']);
+          map((data) => authActions.loginSuccess({ token: data.data })),
+          tap((data: any) => {
+            if (data) {
+              if (!data.token) {
+                this.store.dispatch(ui.isNotLoading());
+                setTimeout(() => {
+                  this.store.dispatch(
+                    ui.isError({
+                      error: {
+                        message: 'Usuario o contraseña incorrectos',
+                        code: 'login-error',
+                      },
+                    })
+                  );
+                }, 10);
+              } else {
+                this.router.navigate(['/dashboard/home']);
+                setTimeout(() => {
+                  this.store.dispatch(ui.isNotLoading());
+                }, 1000);
+              }
+            }
           }),
-          catchError((error: any) => of(authActions.loginError({ error }))),
-          tap((error) => console.log(error)),
-          tap((error: any) => this.store.dispatch(ui.isError({ error })))
+          catchError((error: any) =>
+            of(authActions.loginError({ error })).pipe(
+              tap((error: any) => {
+                this.store.dispatch(ui.isNotLoading());
+                setTimeout(() => {
+                  this.store.dispatch(
+                    ui.isError({
+                      error: {
+                        message: error.error.message || 'Error al autenticar',
+                        code: error.error.code || 'login-error',
+                      },
+                    })
+                  );
+                }, 10);
+              })
+            )
+          )
         )
       )
     )

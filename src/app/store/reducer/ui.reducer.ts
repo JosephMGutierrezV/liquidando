@@ -30,8 +30,18 @@ const initialState: StateUI = {
 
 const _reducerUi = createReducer(
   initialState,
-  on(ui.isLoading, (state, {}) => ({ ...state, isLoading: true })),
-  on(ui.isNotLoading, (state, {}) => ({ ...state, isLoading: false })),
+  on(ui.isLoading, (state, {}) => ({
+    ...state,
+    isLoading: true,
+    error: { message: '', code: '' },
+    success: { message: '', state: false },
+  })),
+  on(ui.isNotLoading, (state, {}) => ({
+    ...state,
+    isLoading: false,
+    error: { message: '', code: '' },
+    success: { message: '', state: false },
+  })),
   on(ui.isError, (state, { error }) => ({
     ...state,
     error: error,
