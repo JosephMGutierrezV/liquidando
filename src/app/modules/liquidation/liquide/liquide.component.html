@@ -12,9 +12,10 @@
             <div class="row">
               <div class="col-6 mb-2">
                 <label for="numeroRadico" class="form-label"
-                  >Radicado del Proceso</label
-                >
+                  >Radicado del Proceso
+                </label>
                 <input
+                  #inputSettled
                   (change)="onChangeSettled($event)"
                   type="number"
                   class="form-control"
