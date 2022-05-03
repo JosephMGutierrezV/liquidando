@@ -6,6 +6,7 @@ import { LiquideComponent } from './liquide/liquide.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { DashboardRoutesModule } from '../dashboard/dashboard-routes.module';
 import { SharedModule } from '../../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,12 @@ import { SharedModule } from '../../shared/shared.module';
     LiquideComponent,
     DashboardComponent,
   ],
-  imports: [CommonModule, SharedModule, DashboardRoutesModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    DashboardRoutesModule,
+  ],
 })
 export class LiquidationModule {}

@@ -8,15 +8,14 @@
       <div class="card border-rounded shadow-sm">
         <div class="card-body">
           <p>Calcule el interes de sus procesos y genere reporte</p>
-          <form class="mt-3">
+          <form [formGroup]="mainForm" class="mt-3">
             <div class="row">
               <div class="col-6 mb-2">
                 <label for="numeroRadico" class="form-label"
                   >Radicado del Proceso
                 </label>
                 <input
-                  #inputSettled
-                  (change)="onChangeSettled($event)"
+                  formControlName="radicado"
                   type="number"
                   class="form-control"
                   id="numeroRadico"
@@ -26,7 +25,7 @@
               <div class="col-6 mb-2">
                 <label for="juzgado" class="form-label">Juzgado</label>
                 <input
-                  [disabled]="isHaveNumberSettled"
+                  formControlName="juzgado"
                   type="text"
                   class="form-control"
                   id="juzgado"
@@ -39,7 +38,7 @@
               <div class="col-6 mb-2">
                 <label for="demandante" class="form-label">Demandante</label>
                 <input
-                  [disabled]="isHaveNumberSettled"
+                  formControlName="demandante"
                   type="text"
                   class="form-control"
                   id="demandante"
@@ -49,7 +48,7 @@
               <div class="col-6 mb-2">
                 <label for="demandado" class="form-label">Demandado</label>
                 <input
-                  [disabled]="isHaveNumberSettled"
+                  formControlName="demandado"
                   type="text"
                   class="form-control"
                   id="demandado"
@@ -61,7 +60,7 @@
                   >Valor capital inicial</label
                 >
                 <input
-                  [disabled]="isHaveNumberSettled"
+                  formControlName="capital"
                   type="number"
                   class="form-control"
                   id="capital"
@@ -71,56 +70,55 @@
               <div class="col-3 mt-2">
                 <label for="dateBegin" class="mr-3">Inicio</label>
                 <app-date-picker
-                  [disabled]="isHaveNumberSettled"
+                  (returnDate)="setDateBegin($event)"
                   inputId="dateBegin"
                 ></app-date-picker>
               </div>
               <div class="col-3 mt-2">
                 <label for="dateEnd" class="mr-3">Final</label>
                 <app-date-picker
-                  [disabled]="isHaveNumberSettled"
+                  (returnDate)="setDateEnd($event)"
                   inputId="dateEnd"
                 ></app-date-picker>
               </div>
               <div class="col-6 mb-2">
-                <label for="capital" class="form-label"
+                <label for="capitalAdiccionales" class="form-label"
                   >Capitales Adicionales</label
                 >
                 <input
-                  [disabled]="isHaveNumberSettled"
+                  formControlName="capitalAdiccionales"
                   type="number"
                   class="form-control"
-                  id="capital"
-                  aria-describedby="capital"
+                  id="capitalAdiccionales"
+                  aria-describedby="capitalAdiccionales"
                 />
               </div>
               <div class="col-3 mb-2">
-                <label for="capital" class="form-label"> Abonos</label>
+                <label for="abonos" class="form-label"> Abonos</label>
                 <input
-                  [disabled]="isHaveNumberSettled"
+                  formControlName="abonos"
                   type="number"
                   class="form-control"
-                  id="capital"
-                  aria-describedby="capital"
+                  id="abonos"
+                  aria-describedby="abonos"
                 />
               </div>
               <div class="col-3 mb-2">
-                <label for="capital" class="form-label"
+                <label for="capitalInicial" class="form-label"
                   >Valor capital inicial</label
                 >
                 <input
-                  [disabled]="isHaveNumberSettled"
+                  formControlName="capitalInicial"
                   type="number"
                   class="form-control"
-                  id="capital"
-                  aria-describedby="capital"
+                  id="capitalInicial"
+                  aria-describedby="capitalInicial"
                 />
               </div>
               <div class="col-12 mb-2">Seleccione la tasa a aplicar</div>
               <div class="col-12 mb-2">
                 <div class="form-check form-check-inline">
                   <input
-                    [disabled]="isHaveNumberSettled"
                     (change)="onItemChange($event)"
                     class="form-check-input"
                     type="radio"
@@ -133,7 +131,6 @@
                 </div>
                 <div class="form-check form-check-inline">
                   <input
-                    [disabled]="isHaveNumberSettled"
                     (change)="onItemChange($event)"
                     class="form-check-input"
                     type="radio"
@@ -144,7 +141,6 @@
                 </div>
                 <div class="form-check form-check-inline">
                   <input
-                    [disabled]="isHaveNumberSettled"
                     (change)="onItemChange($event)"
                     class="form-check-input"
                     type="radio"
@@ -155,7 +151,6 @@
                 </div>
                 <div class="form-check form-check-inline">
                   <input
-                    [disabled]="isHaveNumberSettled"
                     (change)="onItemChange($event)"
                     class="form-check-input"
                     type="radio"
@@ -168,16 +163,16 @@
               <div class="col-12 mb-2" *ngIf="showInputOtherRate">
                 <label for="nuevaTasa" class="form-label">Valor Tasa</label>
                 <input
-                  [disabled]="isHaveNumberSettled"
+                  formControlName="nuevaTasa"
                   type="number"
                   class="form-control"
                   id="nuevaTasa"
-                  aria-describedby="capital"
+                  aria-describedby="nuevaTasa"
                 />
               </div>
               <div class="col-12 text-center">
                 <button
-                  [disabled]="isHaveNumberSettled"
+                  (click)="calcular()"
                   type="button"
                   class="btn btn-success"
                 >
@@ -193,40 +188,42 @@
       <div class="card border-rounded shadow-sm">
         <div class="card-body">
           <p>Abonos del cliente</p>
-          <div class="row">
-            <div class="col-6">
-              <label for="dateAbonos" class="mr-3">Selecione fecha</label>
-              <app-date-picker
-                [disabled]="isHaveNumberSettled"
-                inputId="dateAbonos"
-              ></app-date-picker>
+          <form [formGroup]="abonosForm">
+            <div class="row">
+              <div class="col-6">
+                <label for="dateAbonos" class="mr-3">Selecione fecha</label>
+                <app-date-picker
+                  (returnDate)="setDateAbonos($event)"
+                  inputId="dateAbonos"
+                ></app-date-picker>
+              </div>
+              <div class="form-group col-6">
+                <label for="valorAbono">Monto de ingreso</label>
+                <input
+                  formControlName="abonos"
+                  type="number"
+                  class="form-control"
+                  id="valorAbono"
+                  placeholder="Monto"
+                />
+              </div>
+              <div class="col-12 text-right">
+                <button
+                  (click)="agregarAbonos()"
+                  type="button"
+                  class="btn btn-success"
+                >
+                  Agregar
+                </button>
+              </div>
+              <div class="col-12">
+                <hr />
+              </div>
+              <div class="col-12">
+                <app-p-table-basic (onDeleteEvent)="deleteItemAbonos($event)" [data]="dataAbonos"></app-p-table-basic>
+              </div>
             </div>
-            <div class="form-group col-6">
-              <label for="valorAbono">Monto de ingreso</label>
-              <input
-                [disabled]="isHaveNumberSettled"
-                type="number"
-                class="form-control"
-                id="valorAbono"
-                placeholder="Monto"
-              />
-            </div>
-            <div class="col-12 text-right">
-              <button
-                [disabled]="isHaveNumberSettled"
-                type="button"
-                class="btn btn-success"
-              >
-                Agregar
-              </button>
-            </div>
-            <div class="col-12">
-              <hr />
-            </div>
-            <div class="col-12">
-              <app-p-table-basic></app-p-table-basic>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -234,42 +231,47 @@
       <div class="card border-rounded shadow-sm">
         <div class="card-body">
           <p>Capitalizacion del cliente</p>
-          <div class="row">
-            <div class="col-6">
-              <label for="dateCapitalizacion" class="mr-3"
-                >Selecione fecha</label
-              >
-              <app-date-picker
-                [disabled]="isHaveNumberSettled"
-                inputId="dateCapitalizacion"
-              ></app-date-picker>
+          <form [formGroup]="capitalizacionClienteForm">
+            <div class="row">
+              <div class="col-6">
+                <label for="dateCapitalizacion" class="mr-3"
+                  >Selecione fecha</label
+                >
+                <app-date-picker
+                  (returnDate)="setDateCapitalizacionCliente($event)"
+                  inputId="dateCapitalizacion"
+                ></app-date-picker>
+              </div>
+              <div class="form-group col-6">
+                <label for="valorCapitalizacion">Monto de ingreso</label>
+                <input
+                  formControlName="capitalizacionCliente"
+                  type="number"
+                  class="form-control"
+                  id="valorCapitalizacion"
+                  placeholder="Monto"
+                />
+              </div>
+              <div class="col-12 text-right">
+                <button
+                  (click)="agregarCapitalizacionCliente()"
+                  type="button"
+                  class="btn btn-success"
+                >
+                  Agregar
+                </button>
+              </div>
+              <div class="col-12">
+                <hr />
+              </div>
+              <div class="col-12">
+                <app-p-table-basic
+                (onDeleteEvent)="deleteItemCapitalizacionCliente($event)"
+                  [data]="dataCapitalizacionCliente"
+                ></app-p-table-basic>
+              </div>
             </div>
-            <div class="form-group col-6">
-              <label for="valorCapitalizacion">Monto de ingreso</label>
-              <input
-                [disabled]="isHaveNumberSettled"
-                type="number"
-                class="form-control"
-                id="valorCapitalizacion"
-                placeholder="Monto"
-              />
-            </div>
-            <div class="col-12 text-right">
-              <button
-                [disabled]="isHaveNumberSettled"
-                type="button"
-                class="btn btn-success"
-              >
-                Agregar
-              </button>
-            </div>
-            <div class="col-12">
-              <hr />
-            </div>
-            <div class="col-12">
-              <app-p-table-basic></app-p-table-basic>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -279,9 +281,13 @@
         <div class="card-body">
           <div class="row">
             <div class="col-4 text-center">
-              <button type="button" class="btn btn-sm btn-success">
+              <a
+                href="assets/templates/excel/plantilla.xlsx"
+                download="plantilla.xlsx"
+                class="btn btn-sm btn-success button-a"
+              >
                 Descargar Plantilla
-              </button>
+              </a>
             </div>
             <div class="col-8">
               <p class="text-help-plantilla">

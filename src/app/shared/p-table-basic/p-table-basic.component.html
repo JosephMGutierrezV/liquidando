@@ -6,12 +6,18 @@
       <th style="width: 3rem"></th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-data>
+  <ng-template pTemplate="body" let-value>
     <tr>
-      <td>{{data.fecha}}</td>
-      <td>{{data.monto}}</td>
+      <td>{{ value.fecha }}</td>
+      <td>{{ value.monto | currency }}</td>
       <td>
-        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2"></button>
+        <button
+          pButton
+          pRipple
+          icon="pi pi-trash"
+          (click)="onDelete(value)"
+          class="p-button-rounded p-button-danger mr-2"
+        ></button>
       </td>
     </tr>
   </ng-template>

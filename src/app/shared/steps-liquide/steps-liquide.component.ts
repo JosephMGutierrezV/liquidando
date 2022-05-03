@@ -170,7 +170,6 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
 
   setDateBegin(event: any) {
     this.dateBegin = event;
-    console.log(this.dateBegin);
   }
 
   setDataEnd(event: any) {
