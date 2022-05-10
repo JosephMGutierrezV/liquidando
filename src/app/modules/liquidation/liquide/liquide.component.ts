@@ -12,6 +12,7 @@ import { ITableBasic } from 'src/app/interfaces/tables.interface';
 })
 export class LiquideComponent implements OnInit, OnDestroy {
   public showInputOtherRate = false;
+  public showResume = false;
 
   public subscriptions: any[] = [];
 
@@ -30,6 +31,13 @@ export class LiquideComponent implements OnInit, OnDestroy {
   public dataCapitalizacionCliente: ITableBasic[] = [];
   public idAbonos = 0;
   public idCapitalizacionCliente = 0;
+
+  public dataResumeAbonos = [];
+  public dataResumeProceso = [];
+
+  public totalInteresesMensualesResumen = 0;
+  public granTotalResumen = 0;
+  public totalInteresesDias = 0;
 
   constructor(private store: Store<AppState>) {}
 

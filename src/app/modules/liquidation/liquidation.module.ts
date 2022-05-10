@@ -7,6 +7,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { DashboardRoutesModule } from '../dashboard/dashboard-routes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     SharedModule,
     DashboardRoutesModule,
+    TableModule,
   ],
 })
 export class LiquidationModule {}
