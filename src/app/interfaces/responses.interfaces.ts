@@ -10,3 +10,22 @@ export interface IError {
 export interface IRegistro {
   dataUser: string[];
 }
+
+export interface ICalculo {
+  complemento: any[];
+  data: IDataCalculo[];
+  listaAC: any[];
+  totales: string[];
+}
+
+export interface IDataCalculo {
+  capital: string;
+  fecha: string;
+  interes: string;
+  tasa: string;
+  total: string;
+}
+
+export interface IAbono {
+  data: string;
+}
