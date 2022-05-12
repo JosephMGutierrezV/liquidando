@@ -130,3 +130,7 @@ const _reducerLiquide = createReducer(
     error: error,
   }))
 );
+
+export function reducerLiquide(state: any, action: any) {
+  return _reducerLiquide(state, action);
+}
