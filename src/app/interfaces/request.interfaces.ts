@@ -7,10 +7,10 @@ export interface IRequestRegistro {
 }
 
 export interface IRequestCalculo {
-  radicado: string;
-  demandante: string;
-  demandado: string;
-  juzgado: string;
+  radicado?: string;
+  demandante?: string;
+  demandado?: string;
+  juzgado?: string;
   valor: string;
   fechaInicial: string;
   fechaFinal: string;
@@ -27,4 +27,11 @@ export interface IRequestAbono {
 export interface IAbonoData {
   fecha: string;
   monto: string;
+}
+
+export interface ICalculoFinalizar {
+  dataLiquidacion: any[];
+  data: [];
+  dataMonto: [];
+  dataRequestCalculo: [];
 }

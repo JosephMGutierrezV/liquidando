@@ -12,7 +12,7 @@ import { ITableBasic } from 'src/app/interfaces/tables.interface';
 })
 export class LiquideComponent implements OnInit, OnDestroy {
   public showInputOtherRate = false;
-  public showResume = false;
+  public showResume = true;
 
   public subscriptions: any[] = [];
 
