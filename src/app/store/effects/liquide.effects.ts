@@ -31,16 +31,6 @@ export class LiquideEffects {
           tap((data: any) => {
             if (data) {
               this.store.dispatch(ui.isNotLoading());
-              setTimeout(() => {
-                this.store.dispatch(
-                  ui.isSuccess({
-                    success: {
-                      message: 'Calculo realizado con exito',
-                      state: true,
-                    },
-                  })
-                );
-              }, 10);
             }
           }),
           catchError((error: any) =>
@@ -81,16 +71,6 @@ export class LiquideEffects {
           tap((data) => {
             if (data) {
               this.store.dispatch(ui.isNotLoading());
-              setTimeout(() => {
-                this.store.dispatch(
-                  ui.isSuccess({
-                    success: {
-                      message: 'Abonos cargados con exito',
-                      state: true,
-                    },
-                  })
-                );
-              }, 10);
             }
           }),
           catchError((error: any) =>

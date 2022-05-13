@@ -29,3 +29,10 @@ export interface IDataCalculo {
 export interface IAbono {
   data: string;
 }
+
+export interface IHistorial {
+  caso: string;
+  demandado: string;
+  demandante: string;
+  fecha: string;
+}

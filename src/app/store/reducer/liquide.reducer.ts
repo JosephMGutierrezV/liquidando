@@ -8,7 +8,8 @@ import { IError } from 'src/app/interfaces/responses.interfaces';
 import * as liquide from '../actions/liquide.actions';
 
 export interface StateLiquide {
-  loaded: boolean;
+  loadingCalculo: boolean;
+  loadingAbono: boolean;
   requestCalculo: IRequestCalculo;
   responseCalculo: ICalculo;
   responseAbono: string;
@@ -17,7 +18,8 @@ export interface StateLiquide {
 }
 
 const initialState: StateLiquide = {
-  loaded: false,
+  loadingCalculo: false,
+  loadingAbono: false,
   requestCalculo: {
     radicado: '',
     demandante: '',
@@ -51,7 +53,7 @@ const _reducerLiquide = createReducer(
   initialState,
   on(liquide.calculoLoading, (state, { request }) => ({
     ...state,
-    loaded: false,
+    loadingCalculo: false,
     requestCalculo: request,
     error: {
       message: '',
@@ -60,7 +62,7 @@ const _reducerLiquide = createReducer(
   })),
   on(liquide.calculoSuccess, (state, { response }) => ({
     ...state,
-    loaded: true,
+    loadingCalculo: true,
     requestCalculo: {
       radicado: '',
       demandante: '',
@@ -80,7 +82,8 @@ const _reducerLiquide = createReducer(
   })),
   on(liquide.calculoError, (state, { error }) => ({
     ...state,
-    loaded: true,
+    loadingCalculo: false,
+    loadingAbono: false,
     requestCalculo: {
       radicado: '',
       demandante: '',
@@ -97,7 +100,7 @@ const _reducerLiquide = createReducer(
   })),
   on(liquide.abonoLoading, (state, { request }) => ({
     ...state,
-    loaded: false,
+    loadingAbono: false,
     requestAbono: request,
     error: {
       message: '',
@@ -106,7 +109,7 @@ const _reducerLiquide = createReducer(
   })),
   on(liquide.abonoSuccess, (state, { data }) => ({
     ...state,
-    loaded: true,
+    loadingAbono: true,
     requestAbono: {
       radicado: '',
       abonos: [],
@@ -120,7 +123,8 @@ const _reducerLiquide = createReducer(
   })),
   on(liquide.abonoError, (state, { error }) => ({
     ...state,
-    loaded: true,
+    loadingCalculo: false,
+    loadingAbono: false,
     requestAbono: {
       radicado: '',
       abonos: [],
