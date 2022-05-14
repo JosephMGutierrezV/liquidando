@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
-  ICalculoFinalizar,
   IRequestAbono,
   IRequestCalculo,
+  IRequestCalculoFinal,
 } from '../interfaces/request.interfaces';
 import { AppState } from '../store/app.reducer';
 
@@ -33,15 +33,24 @@ export class LiquideService {
       .pipe(map((resp: any) => resp));
   }
 
-  calculoFinalizar(requestData: ICalculoFinalizar) {
+  calculoFinalizar(requestData: IRequestCalculoFinal) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.token,
+      }),
+    };
     const request = [
-      requestData.dataLiquidacion,
+      requestData.dataProceso,
       requestData.data,
-      requestData.dataMonto,
-      requestData.dataRequestCalculo,
+      requestData.dataTotales,
+      requestData.dataRequest,
     ];
     return this.http
-      .put(`${environment.API_URL}/amortizacion/calculo`, request)
+      .put(
+        `${environment.API_URL}/amortizacion/calculo`,
+        { data: request },
+        httpOptions
+      )
       .pipe(map((resp: any) => resp));
   }
 

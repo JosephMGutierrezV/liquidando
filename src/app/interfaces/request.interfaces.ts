@@ -18,6 +18,13 @@ export interface IRequestCalculo {
   id: number;
 }
 
+export interface IRequestCalculoFinal {
+  dataProceso: any;
+  dataTotales: any;
+  dataRequest: any;
+  data: any;
+}
+
 export interface IRequestAbono {
   radicado: string;
   abonos: IAbonoData[];
@@ -27,11 +34,4 @@ export interface IRequestAbono {
 export interface IAbonoData {
   fecha: string;
   monto: string;
-}
-
-export interface ICalculoFinalizar {
-  dataLiquidacion: any[];
-  data: [];
-  dataMonto: [];
-  dataRequestCalculo: [];
 }

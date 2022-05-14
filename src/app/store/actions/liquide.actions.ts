@@ -1,4 +1,7 @@
-import { IRequestAbono } from './../../interfaces/request.interfaces';
+import {
+  IRequestAbono,
+  IRequestCalculoFinal,
+} from './../../interfaces/request.interfaces';
 import { createAction, props } from '@ngrx/store';
 import { IRequestCalculo } from 'src/app/interfaces/request.interfaces';
 import { ICalculo, IError } from 'src/app/interfaces/responses.interfaces';
@@ -30,5 +33,20 @@ export const abonoSuccess = createAction(
 
 export const abonoError = createAction(
   '[Liquide] Abono Error',
+  props<{ error: IError }>()
+);
+
+export const calculoFinalizarLoading = createAction(
+  '[Liquide] Calculo Finalizar Loading',
+  props<{ request: IRequestCalculoFinal }>()
+);
+
+export const calculoFinalizarSuccess = createAction(
+  '[Liquide] Calculo Finalizar Success',
+  props<{ data: string }>()
+);
+
+export const calculoFinalizarError = createAction(
+  '[Liquide] Calculo Finalizar Error',
   props<{ error: IError }>()
 );

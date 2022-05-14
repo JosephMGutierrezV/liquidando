@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import {
   IRequestAbono,
   IRequestCalculo,
+  IRequestCalculoFinal,
 } from 'src/app/interfaces/request.interfaces';
 import { ICalculo } from 'src/app/interfaces/responses.interfaces';
 import { IError } from 'src/app/interfaces/responses.interfaces';
@@ -10,16 +11,20 @@ import * as liquide from '../actions/liquide.actions';
 export interface StateLiquide {
   loadingCalculo: boolean;
   loadingAbono: boolean;
+  loadingCalculoFinal: boolean;
   requestCalculo: IRequestCalculo;
   responseCalculo: ICalculo;
   responseAbono: string;
   requestAbono: IRequestAbono;
   error: IError;
+  requestCalculoFinal?: IRequestCalculoFinal;
+  responseCalculoFinal?: string;
 }
 
 const initialState: StateLiquide = {
   loadingCalculo: false,
   loadingAbono: false,
+  loadingCalculoFinal: false,
   requestCalculo: {
     radicado: '',
     demandante: '',
@@ -132,6 +137,29 @@ const _reducerLiquide = createReducer(
     },
     responseAbono: '',
     error: error,
+  })),
+  on(liquide.calculoFinalizarLoading, (state, { request }) => ({
+    ...state,
+    requestCalculoFinal: request,
+    error: {
+      message: '',
+      code: '',
+    },
+    loadingCalculoFinal: false,
+  })),
+  on(liquide.calculoFinalizarSuccess, (state, { data }) => ({
+    ...state,
+    error: {
+      message: '',
+      code: '',
+    },
+    loadingCalculoFinal: true,
+    responseCalculoFinal: data,
+  })),
+  on(liquide.calculoFinalizarError, (state, { error }) => ({
+    ...state,
+    error: error,
+    loadingCalculoFinal: false,
   }))
 );
 

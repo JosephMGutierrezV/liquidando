@@ -1,7 +1,7 @@
 import { AppState } from './../../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import * as moment from 'moment';
 import * as actions from './../../../store/actions';
 import { ITableBasic } from 'src/app/interfaces/tables.interface';
@@ -11,7 +11,7 @@ import { IRequestAbono } from 'src/app/interfaces/request.interfaces';
   templateUrl: './liquide.component.html',
   styleUrls: ['./liquide.component.scss'],
 })
-export class LiquideComponent implements OnInit, OnDestroy {
+export class LiquideComponent implements OnInit, OnDestroy, AfterViewInit {
   public showInputOtherRate = false;
   public showResume = false;
 
@@ -70,6 +70,10 @@ export class LiquideComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((subscription: any) =>
       subscription.unsubscribe()
     );
+  }
+
+  ngAfterViewInit(): void {
+    this.showResume = false;
   }
 
   initForms() {
@@ -216,12 +220,14 @@ export class LiquideComponent implements OnInit, OnDestroy {
   }
 
   private clearArray(data: any[]): any[] {
-    const newData = data.map((element: any) => {
-      delete element.id;
-      element.monto = element.monto.toString();
-      return element;
-    });
-    return newData;
+    const newData = JSON.stringify(
+      data.map((element: any) => {
+        delete element.id;
+        element.monto = element.monto.toString();
+        return element;
+      })
+    );
+    return JSON.parse(newData);
   }
 
   deleteItemCapitalizacionCliente(capital: any) {

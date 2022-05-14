@@ -8,6 +8,8 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
+import * as actions from './../../store/actions';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-resume-liquide',
@@ -26,6 +28,9 @@ export class ResumeLiquideComponent implements OnInit, OnDestroy {
   public granTotalResumen: number = 0;
 
   public id: number = -1;
+  public dataRequest: any;
+
+  private token: string = '';
 
   @Output() showResumeChange = new EventEmitter<boolean>();
 
@@ -34,10 +39,32 @@ export class ResumeLiquideComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
+    this.initSubsAuth();
+    this.initSubsLiquide();
+  }
+
+  private initSubsAuth() {
+    this.subscriptions.push(
+      this.store.select('auth').subscribe((state: any) => {
+        this.token = state.token;
+      })
+    );
+  }
+
+  private initSubsLiquide() {
     this.subscriptions.push(
       this.store.select('liquide').subscribe((state: any) => {
         if (state.requestCalculo.id !== -1) {
           this.id = state.requestCalculo.id;
+        }
+
+        if (!state.loadingCalculo) {
+          this.dataRequest = state.requestCalculo;
+        }
+
+        if (state.loadingCalculoFinal) {
+          this.showResume = false;
+          this.showResumeChange.emit(true);
         }
 
         if (state.loadingCalculo) {
@@ -66,5 +93,35 @@ export class ResumeLiquideComponent implements OnInit, OnDestroy {
 
   showResumeEvent() {
     this.showResumeChange.emit(true);
+  }
+
+  onClickSaveLiquide() {
+    this.store.dispatch(actions.ui.isLoading());
+    const decoded: any = jwt_decode(this.token);
+    const requestCalculo = [
+      decoded.identity.id,
+      this.dataRequest.radicado,
+      this.dataRequest.demandante,
+      this.dataRequest.demandado,
+      this.dataRequest.juzgado,
+      this.dataRequest.valor,
+      this.dataRequest.fechaInicial,
+      this.dataRequest.fechaFinal,
+      this.dataRequest.tipoTasa,
+      '',
+    ];
+    const request = {
+      dataProceso: this.dataResumeProceso,
+      data: [],
+      dataTotales: [
+        this.totalInteresesMensualesResumen,
+        this.totalInteresesDias,
+        this.granTotalResumen,
+      ],
+      dataRequest: requestCalculo,
+    };
+    this.store.dispatch(
+      actions.liquide.calculoFinalizarLoading({ request: request })
+    );
   }
 }

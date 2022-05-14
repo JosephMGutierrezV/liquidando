@@ -1,6 +1,6 @@
 import { AppState } from './../../../store/app.reducer';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import * as actions from './../../../store/actions';
 
 @Component({
@@ -8,7 +8,7 @@ import * as actions from './../../../store/actions';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   public showResume = false;
 
   public subscritions: any[] = [];
@@ -37,6 +37,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  ngAfterViewInit(): void {
+    this.showResume = false;
   }
 
   ngOnDestroy(): void {

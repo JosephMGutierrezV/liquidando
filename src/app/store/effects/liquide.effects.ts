@@ -90,4 +90,42 @@ export class LiquideEffects {
       )
     )
   );
+
+  cargarCalculoFinalizar = createEffect(() =>
+    this.actions$.pipe(
+      ofType(liquide.calculoFinalizarLoading),
+      tap(() => {
+        this.store.dispatch(ui.isLoading());
+      }),
+      mergeMap(({ request }) =>
+        this.LiquideService.calculoFinalizar(request)!.pipe(
+          map((data) => liquide.calculoFinalizarSuccess({ data: data })),
+          tap((data: any) => {
+            if (data) {
+              this.store.dispatch(ui.isNotLoading());
+            }
+          }),
+          catchError((error: any) =>
+            of(liquide.calculoFinalizarError({ error })).pipe(
+              tap((error: any) => {
+                this.store.dispatch(ui.isNotLoading());
+                setTimeout(() => {
+                  this.store.dispatch(
+                    ui.isError({
+                      error: {
+                        message:
+                          error.error.message ||
+                          'Error al finalizar el calculo',
+                        code: error.error.code || 'calculo-finalizar-error',
+                      },
+                    })
+                  );
+                }, 10);
+              })
+            )
+          )
+        )
+      )
+    )
+  );
 }
