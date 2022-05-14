@@ -6,6 +6,8 @@ export interface AppState {
   stepsFastLiquide: reducers.stepsFastLiquide.StateFastLiquide;
   auth: reducers.auth.StateLogin;
   liquide: reducers.liquide.StateLiquide;
+  historial: reducers.historial.StateHistorial;
+  tasa: reducers.tasa.StateTasa;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
@@ -13,4 +15,6 @@ export const appReducers: ActionReducerMap<AppState> = {
   stepsFastLiquide: reducers.stepsFastLiquide.reducerFastLiquide,
   auth: reducers.auth.reducerAuth,
   liquide: reducers.liquide.reducerLiquide,
+  historial: reducers.historial.reducerHistorial,
+  tasa: reducers.tasa.reducerTasa,
 };
