@@ -5,7 +5,10 @@
       <hr />
     </div>
     <div class="col-12">
-      <app-p-grid></app-p-grid>
+      <app-p-grid
+        [historials]="dataHistorial"
+        [loading]="!isLoader"
+      ></app-p-grid>
     </div>
   </div>
 </div>

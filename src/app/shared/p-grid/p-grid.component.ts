@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-p-grid',
@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./p-grid.component.scss'],
 })
 export class PGridComponent implements OnInit {
-  public loading = false;
-  public historials: any[] = [];
+  @Input() loading = false;
+  @Input() historials: any[] = [];
 
   constructor() {}
 

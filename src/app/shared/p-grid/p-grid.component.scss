@@ -8,3 +8,35 @@
   background-color: transparent !important;
   color: #1e9895 !important;
 }
+
+:host ::ng-deep .p-button.p-button-success,
+:host ::ng-deep .p-buttonset.p-button-success > .p-button,
+:host ::ng-deep .p-splitbutton.p-button-success > .p-button {
+  color: #ffffff !important;
+  background: #689f38 !important;
+  border: 1px solid #689f38 !important;
+}
+
+:host ::ng-deep .p-button.p-button-success:enabled:hover,
+:host ::ng-deep .p-buttonset.p-button-success > .p-button:enabled:hover,
+:host ::ng-deep .p-splitbutton.p-button-success > .p-button:enabled:hover {
+  background: #5e8f32 !important;
+  color: #ffffff !important;
+  border-color: #5e8f32 !important;
+}
+
+:host ::ng-deep .p-button.p-button-warning,
+:host ::ng-deep .p-buttonset.p-button-warning > .p-button,
+:host ::ng-deep .p-splitbutton.p-button-warning > .p-button {
+  color: #212529 !important;
+  background: #fbc02d !important;
+  border: 1px solid #fbc02d !important;
+}
+
+:host ::ng-deep .p-button.p-button-warning:enabled:hover,
+:host ::ng-deep .p-buttonset.p-button-warning > .p-button:enabled:hover,
+:host ::ng-deep .p-splitbutton.p-button-warning > .p-button:enabled:hover {
+  background: #fab710 !important;
+  color: #212529 !important;
+  border-color: #fab710 !important;
+}

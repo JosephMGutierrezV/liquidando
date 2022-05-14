@@ -1,34 +1,36 @@
 import { createReducer, on } from '@ngrx/store';
-import { IHistorial } from 'src/app/interfaces/responses.interfaces';
 import * as historialActions from '../actions/historial.actions';
 
 export interface StateHistorial {
-  loader: boolean;
+  loading: boolean;
   id: string;
-  response: IHistorial[];
+  response: any;
 }
 
 const initialState: StateHistorial = {
-  loader: false,
+  loading: false,
   id: '',
-  response: [],
+  response: {
+    data: [],
+  },
 };
 
 const _reducerHistorial = createReducer(
   initialState,
   on(historialActions.historialLoading, (state, { id }) => ({
     ...state,
-    loader: true,
+    loading: false,
     id,
   })),
   on(historialActions.historialSuccess, (state, { response }) => ({
     ...state,
-    loader: false,
+    loading: true,
     response,
   })),
   on(historialActions.historialError, (state, { error }) => ({
     ...state,
-    loader: false,
+    loading: false,
+    response: {},
     error,
   }))
 );

@@ -30,6 +30,10 @@ export interface IAbono {
   data: string;
 }
 
+export interface IHistorialData {
+  data: IHistorial[];
+}
+
 export interface IHistorial {
   caso: string;
   demandado: string;

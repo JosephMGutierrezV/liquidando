@@ -26,12 +26,12 @@ export class HistorialEffects {
         }, 10);
       }),
       mergeMap(({ id }) =>
-        this.historialService.getHistorial(id).pipe(
+        this.historialService.getHistorial(id)!.pipe(
           map((data) => historialActions.historialSuccess({ response: data })),
           tap((data) => {
-            if (data) {
+            setTimeout(() => {
               this.store.dispatch(ui.isNotLoading());
-            }
+            }, 500);
           }),
           catchError((error: any) =>
             of(historialActions.historialError({ error })).pipe(

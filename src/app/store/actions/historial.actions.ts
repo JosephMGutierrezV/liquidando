@@ -1,5 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { IError, IHistorial } from 'src/app/interfaces/responses.interfaces';
+import {
+  IError,
+  IHistorialData,
+} from 'src/app/interfaces/responses.interfaces';
 
 export const historialLoading = createAction(
   '[Historial] Loading',
@@ -8,11 +11,10 @@ export const historialLoading = createAction(
 
 export const historialSuccess = createAction(
   '[Historial] Success',
-  props<{ response: IHistorial[] }>()
+  props<{ response: any }>()
 );
 
 export const historialError = createAction(
   '[Historial] Error',
   props<{ error: IError }>()
 );
-
