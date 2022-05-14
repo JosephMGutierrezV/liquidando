@@ -17,13 +17,15 @@ import { Store } from '@ngrx/store';
 export class ResumeLiquideComponent implements OnInit, OnDestroy {
   @Input() showResume: boolean = false;
 
-  @Input() dataResumeAbonos = [];
-  @Input() dataResumeProceso = [];
-  @Input() dataComplementos = [];
+  public dataResumeAbonos = [];
+  public dataResumeProceso = [];
+  public dataComplementos = [];
 
-  @Input() totalInteresesMensualesResumen: number = 0;
-  @Input() totalInteresesDias: number = 0;
-  @Input() granTotalResumen: number = 0;
+  public totalInteresesMensualesResumen: number = 0;
+  public totalInteresesDias: number = 0;
+  public granTotalResumen: number = 0;
+
+  public id: number = -1;
 
   @Output() showResumeChange = new EventEmitter<boolean>();
 
@@ -34,6 +36,10 @@ export class ResumeLiquideComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.push(
       this.store.select('liquide').subscribe((state: any) => {
+        if (state.requestCalculo.id !== -1) {
+          this.id = state.requestCalculo.id;
+        }
+
         if (state.loadingCalculo) {
           this.dataResumeProceso = state.responseCalculo.data;
           this.dataComplementos = state.responseCalculo.complemento;

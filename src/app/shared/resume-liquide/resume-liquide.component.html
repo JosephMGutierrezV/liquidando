@@ -150,7 +150,13 @@
           </div>
         </div>
         <div class="col-12 text-center mb-3">
-          <button class="btn btn-outline-success" type="button">Guardar</button>
+          <button
+            *ngIf="id !== 1"
+            class="btn btn-outline-success"
+            type="button"
+          >
+            Guardar
+          </button>
           <button class="btn btn-outline-success" type="button">
             Imprimir
           </button>

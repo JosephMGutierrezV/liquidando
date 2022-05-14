@@ -29,7 +29,7 @@ const initialState: StateLiquide = {
     fechaInicial: '',
     fechaFinal: '',
     tipoTasa: '',
-    id: 0,
+    id: -1,
   },
   responseCalculo: {
     complemento: [],
@@ -72,7 +72,7 @@ const _reducerLiquide = createReducer(
       fechaInicial: '',
       fechaFinal: '',
       tipoTasa: '',
-      id: 0,
+      id: -1,
     },
     responseCalculo: response,
     error: {
@@ -93,7 +93,7 @@ const _reducerLiquide = createReducer(
       fechaInicial: '',
       fechaFinal: '',
       tipoTasa: '',
-      id: 0,
+      id: -1,
     },
     responseCalculo: { complemento: [], data: [], listaAC: [], totales: [] },
     error: error,
