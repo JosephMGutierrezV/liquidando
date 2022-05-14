@@ -68,11 +68,6 @@ export class LiquideEffects {
       mergeMap(({ request }) =>
         this.LiquideService.abonos(request)!.pipe(
           map((data) => liquide.abonoSuccess({ data: data })),
-          tap((data) => {
-            if (data) {
-              this.store.dispatch(ui.isNotLoading());
-            }
-          }),
           catchError((error: any) =>
             of(liquide.abonoError({ error })).pipe(
               tap((error: any) => {

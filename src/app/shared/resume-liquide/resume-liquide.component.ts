@@ -47,12 +47,14 @@ export class ResumeLiquideComponent implements OnInit, OnDestroy {
             state.responseCalculo.totales[0];
           this.totalInteresesDias = state.responseCalculo.totales[1];
           this.granTotalResumen = state.responseCalculo.totales[2];
+          this.dataResumeAbonos = state.responseCalculo.listaAC;
         } else {
           this.dataResumeProceso = [];
           this.dataComplementos = [];
           this.totalInteresesMensualesResumen = 0;
           this.totalInteresesDias = 0;
           this.granTotalResumen = 0;
+          this.dataResumeAbonos = [];
         }
       })
     );

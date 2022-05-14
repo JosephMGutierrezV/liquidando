@@ -46,9 +46,14 @@ export class LiquideService {
   }
 
   abonos(requestData: IRequestAbono) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.token,
+      }),
+    };
     const request = [requestData.radicado, requestData.abonos, requestData.id];
     return this.http
-      .post(`${environment.API_URL}/amortizacion/abonos`, request)
+      .post(`${environment.API_URL}/amortizacion/abonos`, request, httpOptions)
       .pipe(map((resp: any) => resp));
   }
 
