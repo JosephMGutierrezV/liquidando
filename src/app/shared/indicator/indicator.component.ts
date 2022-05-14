@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,6 +8,8 @@ import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 })
 export class IndicatorComponent implements OnInit {
   public faDollarSign = faDollarSign;
+  @Input() name: string = '';
+  @Input() value: string = '';
 
   constructor() {}
 

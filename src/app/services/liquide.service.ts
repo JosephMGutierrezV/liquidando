@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
@@ -7,17 +8,28 @@ import {
   IRequestAbono,
   IRequestCalculo,
 } from '../interfaces/request.interfaces';
+import { AppState } from '../store/app.reducer';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LiquideService {
-  constructor(private http: HttpClient) {}
+  private token = '';
 
+  constructor(private http: HttpClient, private store: Store<AppState>) {
+    this.store.select('auth').subscribe((auth) => {
+      this.token = auth.token;
+    });
+  }
   calculo(requestData: IRequestCalculo) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.token,
+      }),
+    };
     const request = this.buildRequestCalculo(requestData);
     return this.http
-      .post(`${environment.API_URL}/amortizacion/calculo`, request)
+      .post(`${environment.API_URL}/amortizacion/calculo`, request, httpOptions)
       .pipe(map((resp: any) => resp));
   }
 

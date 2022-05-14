@@ -23,6 +23,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
 import { PTableBasicComponent } from './p-table-basic/p-table-basic.component';
+import { ResumeLiquideComponent } from './resume-liquide/resume-liquide.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PTableBasicComponent } from './p-table-basic/p-table-basic.component';
     DatePickerComponent,
     DragDropFileUploadComponent,
     PTableBasicComponent,
+    ResumeLiquideComponent,
   ],
   imports: [
     RouterModule,
@@ -68,6 +70,7 @@ import { PTableBasicComponent } from './p-table-basic/p-table-basic.component';
     DatePickerComponent,
     DragDropFileUploadComponent,
     PTableBasicComponent,
+    ResumeLiquideComponent,
   ],
 })
 export class SharedModule {}

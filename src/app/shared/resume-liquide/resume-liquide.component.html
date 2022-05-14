@@ -1,0 +1,168 @@
+<div *ngIf="showResume" class="col-12">
+  <div class="card border-rounded shadow-sm">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6 mb-3">
+          <p>Calcule los intereses de su proceso</p>
+          <p-table
+            sortMode="multiple"
+            [value]="dataResumeProceso"
+            [paginator]="true"
+            [rows]="10"
+            currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+            [showCurrentPageReport]="true"
+            responsiveLayout="scroll"
+            [rowsPerPageOptions]="[10, 25, 50]"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="fecha">
+                  Fecha <p-sortIcon field="fecha"></p-sortIcon>
+                </th>
+                <th pSortableColumn="tasa">
+                  Tasa <p-sortIcon field="tasa"></p-sortIcon>
+                </th>
+                <th pSortableColumn="intereses">
+                  Intereses <p-sortIcon field="intereses"></p-sortIcon>
+                </th>
+                <th pSortableColumn="total">
+                  Total <p-sortIcon field="total"></p-sortIcon>
+                </th>
+                <th pSortableColumn="capital">
+                  Capital <p-sortIcon field="capital"></p-sortIcon>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-proceso>
+              <tr>
+                <td>{{ proceso.fecha }}</td>
+                <td>{{ proceso.tasa }}</td>
+                <td>{{ proceso.interes }}</td>
+                <td>{{ proceso.total }}</td>
+                <td>{{ proceso.capital }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="col-6 mb-3">
+          <p>Desgloce de abonos y capitalizaciones</p>
+          <p-table
+            *ngIf="dataResumeAbonos.length !== 0"
+            sortMode="multiple"
+            [value]="dataResumeAbonos"
+            [paginator]="true"
+            [rows]="10"
+            currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+            [showCurrentPageReport]="true"
+            responsiveLayout="scroll"
+            [rowsPerPageOptions]="[10, 25, 50]"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="fecha">
+                  Fecha <p-sortIcon field="fecha"></p-sortIcon>
+                </th>
+                <th pSortableColumn="abono">
+                  Abono <p-sortIcon field="abono"></p-sortIcon>
+                </th>
+                <th pSortableColumn="capitalizacion">
+                  Capitalizacion
+                  <p-sortIcon field="capitalizacion"></p-sortIcon>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-abonos>
+              <tr>
+                <td>{{ abonos.fecha }}</td>
+                <td>{{ abonos.abono }}</td>
+                <td>{{ abonos.capitalizacion }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+          <p-table
+            *ngIf="dataComplementos.length !== 0"
+            sortMode="multiple"
+            [value]="dataComplementos"
+            [paginator]="true"
+            [rows]="10"
+            currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+            [showCurrentPageReport]="true"
+            responsiveLayout="scroll"
+            [rowsPerPageOptions]="[10, 25, 50]"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="periodo">
+                  Periodo <p-sortIcon field="periodo"></p-sortIcon>
+                </th>
+                <th pSortableColumn="dias-iniciales">
+                  Dias iniciales
+                  <p-sortIcon field="dias-iniciales"></p-sortIcon>
+                </th>
+                <th pSortableColumn="init-dias-iniciales">
+                  Init. dias init.
+                  <p-sortIcon field="init-dias-iniciales"></p-sortIcon>
+                </th>
+                <th pSortableColumn="dias-finales">
+                  Dias finales
+                  <p-sortIcon field="dias-finales"></p-sortIcon>
+                </th>
+                <th pSortableColumn="init-dias-finales">
+                  Init. dias fina.
+                  <p-sortIcon field="init-dias-finales"></p-sortIcon>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-complementos>
+              <tr>
+                <td>{{ complementos[0] }}</td>
+                <td>{{ complementos[1] }}</td>
+                <td>{{ complementos[2] }}</td>
+                <td>{{ complementos[3] }}</td>
+                <td>{{ complementos[4] }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+          <p class="mt-3">Totales</p>
+          <div class="mt-3 mb-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Concepto</th>
+                  <th scope="col">Cantidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Total intereses mensuales</th>
+                  <td>{{ totalInteresesMensualesResumen }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Total intereses de dias</th>
+                  <td>{{ totalInteresesDias }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Gran total</th>
+                  <td>{{ granTotalResumen }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-12 text-center mb-3">
+          <button class="btn btn-outline-success" type="button">Guardar</button>
+          <button class="btn btn-outline-success" type="button">
+            Imprimir
+          </button>
+          <button
+            (click)="showResumeEvent()"
+            class="btn btn-outline-success"
+            type="button"
+          >
+            Regresar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,8 +20,8 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
   public tasasForm!: FormGroup;
   public confirmForm!: FormGroup;
 
-  public dateBegin: string = moment(new Date()).format('MM-DD-YYYY');
-  public dateEnd: string = moment(new Date()).format('MM-DD-YYYY');
+  public dateBegin: string = moment(new Date()).format('YYYY-MM-DD');
+  public dateEnd: string = moment(new Date()).format('YYYY-MM-DD');
 
   constructor(private store: Store<AppState>) {}
 
@@ -178,6 +178,17 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
 
   previousStep(): void {
     this.store.dispatch(actions.fastLiquide.previousStep());
+  }
+
+  finalizar() {
+    const request = {
+      id: 1,
+      valor: this.capitalInicialForm.value.valorCapitalInicial.toString(),
+      fechaInicial: this.dateBegin,
+      fechaFinal: this.dateEnd,
+      tipoTasa: this.tasasForm.value.tasa,
+    };
+    this.store.dispatch(actions.liquide.calculoLoading({ request }));
   }
 
   ngOnDestroy(): void {

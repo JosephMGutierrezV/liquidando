@@ -19,7 +19,7 @@ export class DatePickerComponent implements OnInit {
   ngOnInit(): void {}
 
   getData() {
-    const dateFormated = moment(this.date).format('MM-DD-YYYY');
+    const dateFormated = moment(this.date).format('YYYY-MM-DD');
     this.returnDate.emit(dateFormated);
   }
 }

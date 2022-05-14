@@ -2,12 +2,12 @@ import { createReducer, on } from '@ngrx/store';
 import * as tasaActions from '../actions/tasas.actions';
 
 export interface StateTasa {
-  loader: boolean;
+  loading: boolean;
   response: any[];
 }
 
 const initialState: StateTasa = {
-  loader: false,
+  loading: false,
   response: [],
 };
 
@@ -15,16 +15,16 @@ const _reducerTasa = createReducer(
   initialState,
   on(tasaActions.tasaLoading, (state) => ({
     ...state,
-    loader: true,
+    loading: false,
   })),
   on(tasaActions.tasaSuccess, (state, { response }) => ({
     ...state,
-    loader: false,
+    loading: true,
     response,
   })),
   on(tasaActions.tasaError, (state, { error }) => ({
     ...state,
-    loader: false,
+    loading: false,
     error,
     response: [],
   }))
