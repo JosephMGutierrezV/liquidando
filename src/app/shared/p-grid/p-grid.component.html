@@ -6,6 +6,8 @@
   styleClass="p-datatable-gridlines"
   [paginator]="true"
   [rows]="10"
+  sortMode="multiple"
+  [rowHover]="true"
 >
   <ng-template pTemplate="caption">
     <div class="flex">
@@ -23,16 +25,16 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th pSortableColumn="radicado">
-        Radicado del proceso <p-sortIcon field="radicado"></p-sortIcon>
-      </th>
-      <th pSortableColumn="demandante">
-        Demandante
-        <p-sortIcon field="demandante"></p-sortIcon>
+      <th pSortableColumn="caso">
+        Radicado del proceso <p-sortIcon field="caso"></p-sortIcon>
       </th>
       <th pSortableColumn="demandado">
         Demandado
         <p-sortIcon field="demandado"></p-sortIcon>
+      </th>
+      <th pSortableColumn="demandante">
+        Demandante
+        <p-sortIcon field="demandante"></p-sortIcon>
       </th>
       <th pSortableColumn="fecha">
         Fecha de liquidacion

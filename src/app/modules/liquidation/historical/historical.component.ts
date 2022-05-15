@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 import * as actions from './../../../store/actions';
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-historical',
   templateUrl: './historical.component.html',
@@ -42,10 +44,23 @@ export class HistoricalComponent implements OnInit, OnDestroy {
       this.store.select('historial').subscribe((data) => {
         this.isLoader = data.loading;
         if (data.loading) {
-          this.dataHistorial = data.response.data;
+          this.dataHistorial = this.clearHistorialData(data.response.data);
         }
       })
     );
+  }
+
+  private clearHistorialData(data: any) {
+    let id = 0;
+    const historial = data.map((item: any) => {
+      id++;
+      return {
+        id: id,
+        ...item,
+        fecha: moment(item.fecha).format('YYYY-MM-DD'),
+      };
+    });
+    return [...historial];
   }
 
   ngOnDestroy(): void {
