@@ -1,4 +1,6 @@
 <p-table
+  #dt
+  [globalFilterFields]="['caso', 'demandado', 'demandante', 'fecha']"
   [value]="historials"
   responsiveLayout="scroll"
   [rowsPerPageOptions]="[10, 25, 50]"
@@ -12,6 +14,7 @@
   <ng-template pTemplate="caption">
     <div class="flex">
       <button
+        (click)="clear(dt)"
         pButton
         label="Limpiar"
         class="p-button-outlined"
@@ -19,7 +22,13 @@
       ></button>
       <span class="p-input-icon-left ml-auto">
         <i class="pi pi-search"></i>
-        <input pInputText type="text" placeholder="Busqueda" />
+        <input
+          #inputSearch
+          (input)="search($event)"
+          pInputText
+          type="text"
+          placeholder="Busqueda"
+        />
       </span>
     </div>
   </ng-template>
@@ -65,7 +74,7 @@
         ></button>
       </td>
       <td>
-        <p-tableCheckbox></p-tableCheckbox>
+        <p-tableCheckbox [value]="historial"></p-tableCheckbox>
       </td>
     </tr>
   </ng-template>
