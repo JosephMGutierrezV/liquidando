@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Table } from 'primeng/table';
 
 @Component({
@@ -10,7 +10,7 @@ export class PGridComponent implements OnInit {
   @Input() loading = false;
   @Input() historials: any[] = [];
   @ViewChild('dt') dt!: Table;
-  @ViewChild('inputSearch') inputSearch!: any;
+  @ViewChild('inputSearch') inputSearch!: ElementRef;
 
   constructor() {}
 
