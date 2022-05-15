@@ -28,6 +28,7 @@ const _reducerAuth = createReducer(
   on(auth.loginSuccess, (state, { token }) => ({
     ...state,
     token,
+    psw: '',
     pswRepeat: '',
     name: '',
     type: '',
