@@ -6,7 +6,6 @@ import {
   faArrowCircleDown,
   faPlayCircle,
 } from '@fortawesome/free-solid-svg-icons';
-
 import * as actions from '../../store/actions';
 
 @Component({
@@ -20,8 +19,14 @@ export class LadingComponent implements OnInit {
   public faLaughs = faLaugh;
   public displayModalLogin = false;
   public displayModalRegister = false;
+  public showForgetPass = false;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {}
+
+  onDisplayLogin() {
+    this.showForgetPass = false;
+    this.displayModalLogin = !this.displayModalLogin;
+  }
 }

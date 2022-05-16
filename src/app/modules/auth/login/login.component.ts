@@ -1,5 +1,11 @@
 import { AppState } from './../../../store/app.reducer';
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as actions from '../../../store/actions';
@@ -8,7 +14,7 @@ import * as actions from '../../../store/actions';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   @Input() displayModalLogin = false;
 
   public subscriptions: any[] = [];
@@ -17,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   public type = 'password';
 
-  public showForgetPass = false;
+  @Input() showForgetPass = false;
 
   constructor(private store: Store<AppState>) {}
 
@@ -60,5 +66,9 @@ export class LoginComponent implements OnInit {
         })
       );
     }
+  }
+
+  onHideLogin() {
+    this.showForgetPass = false;
   }
 }

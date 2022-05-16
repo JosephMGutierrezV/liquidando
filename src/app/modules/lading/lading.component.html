@@ -10,7 +10,7 @@
   <form class="form-inline">
     <button
       class="btn btn-sm btn-outline-secondary"
-      (click)="displayModalLogin = !displayModalLogin"
+      (click)="onDisplayLogin()"
       type="button"
     >
       Login
@@ -473,5 +473,8 @@
   </div>
 </section>
 
-<app-login [displayModalLogin]="displayModalLogin"></app-login>
+<app-login
+  [displayModalLogin]="displayModalLogin"
+  [showForgetPass]="showForgetPass"
+></app-login>
 <app-register [displayModalRegister]="displayModalRegister"></app-register>

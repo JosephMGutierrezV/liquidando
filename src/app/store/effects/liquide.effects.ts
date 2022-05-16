@@ -30,7 +30,9 @@ export class LiquideEffects {
           map((data) => liquide.calculoSuccess({ response: data })),
           tap((data: any) => {
             if (data) {
-              this.store.dispatch(ui.isNotLoading());
+              setTimeout(() => {
+                this.store.dispatch(ui.isNotLoading());
+              }, 200);
             }
           }),
           catchError((error: any) =>
@@ -59,12 +61,6 @@ export class LiquideEffects {
   cargarAbono = createEffect(() =>
     this.actions$.pipe(
       ofType(liquide.abonoLoading),
-      tap(() => {
-        this.store.dispatch(ui.isNotLoading());
-        setTimeout(() => {
-          this.store.dispatch(ui.isLoading());
-        }, 10);
-      }),
       mergeMap(({ request }) =>
         this.LiquideService.abonos(request)!.pipe(
           map((data) => liquide.abonoSuccess({ data: data })),
@@ -102,7 +98,9 @@ export class LiquideEffects {
           map((data) => liquide.calculoFinalizarSuccess({ data: data })),
           tap((data: any) => {
             if (data) {
-              this.store.dispatch(ui.isNotLoading());
+              setTimeout(() => {
+                this.store.dispatch(ui.isNotLoading());
+              }, 200);
             }
           }),
           catchError((error: any) =>

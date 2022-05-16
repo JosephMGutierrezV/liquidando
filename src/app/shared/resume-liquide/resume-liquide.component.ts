@@ -63,7 +63,6 @@ export class ResumeLiquideComponent implements OnInit, OnDestroy {
         }
 
         if (state.loadingCalculoFinal) {
-          this.showResume = false;
           this.showResumeChange.emit(true);
         }
 
