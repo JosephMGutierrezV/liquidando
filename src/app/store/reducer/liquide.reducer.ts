@@ -58,6 +58,7 @@ const _reducerLiquide = createReducer(
   initialState,
   on(liquide.calculoLoading, (state, { request }) => ({
     ...state,
+    loadingCalculoFinal: false,
     loadingCalculo: false,
     requestCalculo: request,
     error: {
@@ -68,6 +69,7 @@ const _reducerLiquide = createReducer(
   on(liquide.calculoSuccess, (state, { response }) => ({
     ...state,
     loadingCalculo: true,
+    loadingCalculoFinal: false,
     requestCalculo: {
       radicado: '',
       demandante: '',
@@ -89,6 +91,7 @@ const _reducerLiquide = createReducer(
     ...state,
     loadingCalculo: false,
     loadingAbono: false,
+    loadingCalculoFinal: false,
     requestCalculo: {
       radicado: '',
       demandante: '',
@@ -106,6 +109,7 @@ const _reducerLiquide = createReducer(
   on(liquide.abonoLoading, (state, { request }) => ({
     ...state,
     loadingAbono: false,
+    loadingCalculoFinal: false,
     requestAbono: request,
     error: {
       message: '',
@@ -130,6 +134,7 @@ const _reducerLiquide = createReducer(
     ...state,
     loadingCalculo: false,
     loadingAbono: false,
+    loadingCalculoFinal: false,
     requestAbono: {
       radicado: '',
       abonos: [],

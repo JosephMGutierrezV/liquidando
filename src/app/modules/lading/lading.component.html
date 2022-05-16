@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand navbar-expand-lg">
   <div class="container">
     <img
       class="d-inline-block align-top"
@@ -9,14 +9,14 @@
 
   <form class="form-inline">
     <button
-      class="btn btn-sm btn-outline-secondary"
+      class="btn btn-sm btn-outline-secondary mb-2"
       (click)="onDisplayLogin()"
       type="button"
     >
       Login
     </button>
     <button
-      class="btn btn-outline-success"
+      class="btn btn-outline-success mb-2"
       type="button"
       (click)="displayModalRegister = !displayModalRegister"
     >
@@ -27,14 +27,14 @@
 
 <section class="container">
   <div class="row">
-    <div class="col-6 vertical-center">
+    <div class="col-12 col-lg-6 vertical-center">
       <div>
         <h2>Usted litiga,</h2>
         <h2 class="h3">Nosotros Liquidamos</h2>
         <p>La mejor herramienta para realizar sus liquidaciones</p>
       </div>
     </div>
-    <div class="col-6 vertical-center">
+    <div class="col-12 col-lg-6 vertical-center">
       <img width="100%" src="../assets/images/landing1.svg" alt="" />
     </div>
     <div class="col-12 text-center">
@@ -48,10 +48,10 @@
         <p class="intro">Intro & Demo</p>
       </div>
     </div>
-    <div class="col-6 mt-5">
+    <div class="col-12 col-lg-6 mt-5">
       <img width="100%" src="../assets/images/landing2.svg" alt="" />
     </div>
-    <div class="col-6 mt-5">
+    <div class="col-12 col-lg-6 mt-5">
       <div class="row">
         <div class="col-12 mb-5">
           <div class="card shadow-sm">
@@ -128,7 +128,7 @@
         <div class="col-12 mt-5 mb-5">
           <h3 class="text-color-white">Realmente es muy facil !!</h3>
         </div>
-        <div class="col-6 d-flex mb-5">
+        <div class="col-12 col-lg-6 d-flex mb-5">
           <fa-icon
             class="margin-left"
             [border]="true"
@@ -152,7 +152,7 @@
             </p>
           </section>
         </div>
-        <div class="col-6 mb-5">
+        <div class="col-12 col-lg-6 mb-5">
           <img src="../assets/images/Inicio.png" width="80%" alt="Inicio" />
         </div>
       </div>
@@ -162,14 +162,14 @@
 
 <section class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-12 col-lg-6">
       <img
         src="../assets/images/Computador estadisticas.svg"
         width="100%"
         alt="Estadistica"
       />
     </div>
-    <div class="col-6 mb-5">
+    <div class="col-12 col-lg-6 mb-5">
       <div class="row">
         <div class="col-12">
           <h3>Beneficios de usar liquidando</h3>
@@ -273,7 +273,7 @@
     </div>
     <div class="col-12 mb-5">
       <div class="row">
-        <div class="col-4">
+        <div class="col-6 col-lg-4">
           <div class="card shadow-sm">
             <div class="card-body text-center box-prices">
               <img
@@ -297,7 +297,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-6 col-lg-4">
           <div class="card shadow-sm">
             <div class="card-body text-center box-prices">
               <img
@@ -321,7 +321,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-6 col-lg-4">
           <div class="card shadow-sm">
             <div
               class="card-body background-dark text-center text-white box-prices"
@@ -353,16 +353,16 @@
   <div class="row">
     <div class="col-12 background-blue mt-5 mb-5 p-3 box-contact-us">
       <div class="row">
-        <div class="col-8">
+        <div class="col-6 col-lg-8">
           <div class="row">
-            <div class="col-6 text-center mt-5">
+            <div class="col-5 col-lg-6 text-center mt-5">
               <p class="mb-5">
                 Escribanos y conoce todas las ventajas de liquidando.
               </p>
               <p>Soporte@liquidando.com.co</p>
               <p>Whatsapp: 3144668822</p>
             </div>
-            <div class="col-6 text-center">
+            <div class="col-7 col-lg-6 text-center">
               <div class="container-hand">
                 <img
                   class="img-hand"
@@ -374,7 +374,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4 box-form-contact-us">
+        <div class="col-6 col-lg-4 box-form-contact-us">
           <div class="card container-form-contact-us">
             <div class="card-body body-form-contact-us">
               <h4 class="text-center mb-3 text-color-primary">Contactenos</h4>
@@ -431,10 +431,10 @@
       <h3 class="text-color-primary">Preguntas frecuentes</h3>
       <p>Dudas? Resuelvelas rapido consultando nuestra guia</p>
     </div>
-    <div class="col-6 mb-5">
+    <div class="col-12 col-lg-6 mb-5">
       <app-question></app-question>
     </div>
-    <div class="col-6 mb-5">
+    <div class="col-12 col-lg-6 mb-5">
       <div class="text-end">
         <img
           src="../assets/images/whatsapp-svgrepo-com.svg"
@@ -448,15 +448,17 @@
 
 <section class="footer container-fluid col-12 mt-5">
   <div class="row">
-    <div class="col-4 order-first">
+    <div class="col-4 col-lg-4 order-first">
       <div class="w-100"></div>
     </div>
-    <div class="col-4 order-4 text-center">
+    <div class="col-4 col-lg-4 order-4 text-center">
       <p>Liquidando, inc Bogota, Colombia</p>
       <p>soporte@liquidando.com.co</p>
       <p>Whatsapp: 3144668822</p>
     </div>
-    <div class="col-4 order-last d-flex align-items-center justify-content-end">
+    <div
+      class="col-4 col-lg-4 order-last d-flex align-items-center justify-content-end"
+    >
       <div class="icon-radius">
         <img src="../assets/images/facebook-svgrepo-com.svg" alt="facebook" />
       </div>
