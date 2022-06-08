@@ -35,3 +35,8 @@ export interface IAbonoData {
   fecha: string;
   monto: string;
 }
+
+export interface IRequestForgetPassword {
+  email: string;
+  psw: string;
+}

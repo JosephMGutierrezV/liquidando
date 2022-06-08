@@ -1,11 +1,5 @@
 import { AppState } from './../../../store/app.reducer';
-import {
-  Component,
-  Input,
-  OnInit,
-  AfterViewInit,
-  OnDestroy,
-} from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as actions from '../../../store/actions';
@@ -15,6 +9,8 @@ import * as actions from '../../../store/actions';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  public emailForgetPass: string = '';
+
   @Input() displayModalLogin = false;
 
   public subscriptions: any[] = [];
@@ -70,5 +66,52 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onHideLogin() {
     this.showForgetPass = false;
+  }
+
+  sendChangePassword() {
+    const data = {
+      email: this.emailForgetPass,
+      psw: this.pswRandom(),
+    };
+    this.store.dispatch(actions.auth.forgetPasswordLoading({ dataUser: data }));
+  }
+
+  private pswRandom() {
+    const gLength = 12;
+    const characters = [
+      {
+        name: 'Lowercase',
+        value: 'abcdefghijklmnopqrstuvwxyz',
+        checked: true,
+      },
+      {
+        name: 'Uppercase',
+        value: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        checked: true,
+      },
+      {
+        name: 'Numbers',
+        value: '0123456789',
+        checked: true,
+      },
+      {
+        name: 'Special Characters',
+        value: '_-+=)(*&^%$#@!`~',
+        checked: false,
+      },
+    ];
+    let result = '';
+    let charactersVal = '';
+    for (var j = 0; j < characters.length; j++) {
+      if (characters[j].checked) {
+        charactersVal += characters[j].value;
+      }
+    }
+    for (var i = 0; i < gLength; i++) {
+      result += charactersVal.charAt(
+        Math.floor(Math.random() * charactersVal.length)
+      );
+    }
+    return result;
   }
 }

@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IRequestRegistro } from '../interfaces/request.interfaces';
+import {
+  IRequestForgetPassword,
+  IRequestRegistro,
+} from '../interfaces/request.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +31,12 @@ export class AuthService {
     request.push(dataRequest.type.toUpperCase());
     return this.http
       .post(`${environment.API_URL}/usuarios/registro`, { dataUser: request })
+      .pipe(map((resp: any) => resp));
+  }
+
+  forgetPassword(dataRequest: IRequestForgetPassword) {
+    return this.http
+      .post(`${environment.API_URL}/recupera`, dataRequest)
       .pipe(map((resp: any) => resp));
   }
 }

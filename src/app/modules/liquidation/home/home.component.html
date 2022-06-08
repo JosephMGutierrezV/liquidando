@@ -31,22 +31,11 @@
         </div>
       </div>
     </div>
-    <div class="col-3" *ngIf="!showResume">
+    <div class="col-6" *ngIf="!showResume">
       <p>Indicadores</p>
       <div class="row">
         <div *ngFor="let tasa of dataTasas" class="col-6 mb-3">
           <app-indicator [value]="tasa"></app-indicator>
-        </div>
-      </div>
-    </div>
-    <div class="col-3" *ngIf="!showResume">
-      <p>Noticias de interes</p>
-      <div class="row">
-        <div class="col-12 mb-3">
-          <app-news></app-news>
-        </div>
-        <div class="col-12 mb-3">
-          <app-news></app-news>
         </div>
       </div>
     </div>

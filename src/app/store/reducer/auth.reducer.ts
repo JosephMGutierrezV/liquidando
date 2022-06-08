@@ -8,6 +8,7 @@ export interface StateLogin {
   pswRepeat?: string;
   name?: string;
   type?: string;
+  isSuccessForgetPassword?: boolean;
   token: string;
   error: IError;
 }
@@ -20,6 +21,7 @@ const initialState: StateLogin = {
     message: '',
     code: '',
   },
+  isSuccessForgetPassword: false,
 };
 
 const _reducerAuth = createReducer(
@@ -94,6 +96,20 @@ const _reducerAuth = createReducer(
     pswRepeat: '',
     name: '',
     type: '',
+  })),
+  on(auth.forgetPasswordLoading, (state, { dataUser }) => ({
+    ...state,
+    user: dataUser.email,
+    isSuccessForgetPassword: false,
+  })),
+  on(auth.forgetPasswordSuccess, (state, { response }) => ({
+    ...state,
+    isSuccessForgetPassword: true,
+  })),
+  on(auth.forgetPasswordError, (state, { error }) => ({
+    ...state,
+    isSuccessForgetPassword: false,
+    error,
   }))
 );
 

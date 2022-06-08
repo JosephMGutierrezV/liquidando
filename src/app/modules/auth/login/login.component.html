@@ -68,6 +68,7 @@
       <label for="inputEmailForgetPass">Email</label>
       <input
         type="email"
+        [(ngModel)]="emailForgetPass"
         class="form-control"
         id="inputEmailForgetPass"
         placeholder="Ingrese su Correo"
@@ -81,7 +82,7 @@
         >Iniciar session</a
       >
       <button
-        (click)="showFormForgetPass()"
+        (click)="sendChangePassword()"
         type="submit"
         class="btn btn-success button-radius"
       >

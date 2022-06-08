@@ -215,4 +215,60 @@ export class AuthEffects {
       )
     )
   );
+
+  forgetPassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(authActions.forgetPasswordLoading),
+      tap(() => {
+        this.store.dispatch(ui.isNotLoading());
+        setTimeout(() => {
+          this.store.dispatch(ui.isLoading());
+        }, 10);
+      }),
+      mergeMap(({ dataUser }) =>
+        this.authService.forgetPassword(dataUser)!.pipe(
+          map((data) =>
+            authActions.forgetPasswordSuccess({ response: data.data })
+          ),
+          tap((data: any) => {
+            if (data['error']) {
+              this.store.dispatch(ui.isNotLoading());
+              setTimeout(() => {
+                this.store.dispatch(
+                  ui.isError({
+                    error: {
+                      message: data.error || 'Error al enviar correo',
+                      code: data.error.code || 'forget-password-error',
+                    },
+                  })
+                );
+              }, 10);
+            } else {
+              setTimeout(() => {
+                this.store.dispatch(ui.isNotLoading());
+              }, 1000);
+            }
+          }),
+          catchError((error: any) =>
+            of(authActions.forgetPasswordError({ error })).pipe(
+              tap((error: any) => {
+                this.store.dispatch(ui.isNotLoading());
+                setTimeout(() => {
+                  this.store.dispatch(
+                    ui.isError({
+                      error: {
+                        message:
+                          error.error.message || 'Error al enviar correo',
+                        code: error.error.code || 'forget-password-error',
+                      },
+                    })
+                  );
+                }, 10);
+              })
+            )
+          )
+        )
+      )
+    )
+  );
 }

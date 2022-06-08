@@ -1,4 +1,7 @@
-import { IRequestRegistro } from './../../interfaces/request.interfaces';
+import {
+  IRequestRegistro,
+  IRequestForgetPassword,
+} from './../../interfaces/request.interfaces';
 import { createAction, props } from '@ngrx/store';
 import { IError } from 'src/app/interfaces/responses.interfaces';
 
@@ -38,5 +41,20 @@ export const registerUserSuccess = createAction(
 
 export const registerUserError = createAction(
   '[Auth] Register User Error',
+  props<{ error: IError }>()
+);
+
+export const forgetPasswordLoading = createAction(
+  '[Auth] Forget Password Loading',
+  props<{ dataUser: IRequestForgetPassword }>()
+);
+
+export const forgetPasswordSuccess = createAction(
+  '[Auth] Forget Password Success',
+  props<{ response: string }>()
+);
+
+export const forgetPasswordError = createAction(
+  '[Auth] Forget Password Error',
   props<{ error: IError }>()
 );
