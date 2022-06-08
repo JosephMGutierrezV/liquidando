@@ -39,7 +39,7 @@
       </a>
     </li>
 
-    <li class="nav-item border">
+    <li *ngIf="isAdmin" class="nav-item border">
       <a
         routerLink="/dashboard/admin"
         routerLinkActive="active-route"

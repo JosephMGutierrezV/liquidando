@@ -5,10 +5,12 @@ import {
   faCalculator,
   faClock,
   faArrowAltCircleRight,
-  faUserShield
+  faUserShield,
 } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import * as actions from '../../store/actions';
+import jwtDecode from 'jwt-decode';
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -20,12 +22,25 @@ export class SidebarComponent implements OnInit {
   public faClock = faClock;
   public faArrowAltCircleRight = faArrowAltCircleRight;
   public faUserShield = faUserShield;
-
   public clickExit = false;
+  public isAdmin = false;
+  public subscriptions: any[] = [];
 
   constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscriptions.push(
+      this.store.select('auth').subscribe(({ token }) => {
+        const decoded: any = jwtDecode(token);
+        const rol = decoded.identity.privilegios;
+        if (rol == '1.1.1.1.1') {
+          this.isAdmin = true;
+        } else {
+          this.isAdmin = false;
+        }
+      })
+    );
+  }
 
   logout() {
     this.clickExit = true;
