@@ -23,6 +23,8 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
   public dateBegin: string = moment(new Date()).format('YYYY-MM-DD');
   public dateEnd: string = moment(new Date()).format('YYYY-MM-DD');
 
+  public dateMin: Date = new Date();
+
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
@@ -170,6 +172,7 @@ export class StepsLiquideComponent implements OnInit, OnDestroy, AfterViewInit {
 
   setDateBegin(event: any) {
     this.dateBegin = event;
+    this.dateMin = new Date(event);
   }
 
   setDataEnd(event: any) {

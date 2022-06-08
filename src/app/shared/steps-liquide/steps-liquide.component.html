@@ -26,6 +26,7 @@
       <div>
         <label for="dateEnd" class="form-label me-3">Final</label>
         <app-date-picker
+          [minDate]="dateMin"
           (returnDate)="setDataEnd($event)"
           inputId="dateEnd"
         ></app-date-picker>

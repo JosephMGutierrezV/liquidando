@@ -1,5 +1,9 @@
 <label for="icon">{{ textLabel }}</label>
 <p-calendar
+  #calendar
+  [disabledDates]="disabledDates"
+  [minDate]="minDate"
+  [maxDate]="maxDate"
   [disabled]="disabled"
   (onSelect)="getData()"
   [(ngModel)]="date"

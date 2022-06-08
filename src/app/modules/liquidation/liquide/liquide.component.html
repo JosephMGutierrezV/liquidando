@@ -159,6 +159,10 @@
               <div class="col-6">
                 <label for="dateAbonos" class="mr-3">Selecione fecha</label>
                 <app-date-picker
+                  #dt1
+                  [disabledDates]="invalidDatesAbono"
+                  [minDate]="dateMin"
+                  [maxDate]="dateMax"
                   (returnDate)="setDateAbonos($event)"
                   inputId="dateAbonos"
                 ></app-date-picker>
@@ -207,6 +211,10 @@
                   >Selecione fecha</label
                 >
                 <app-date-picker
+                  #dt2
+                  [disabledDates]="invalidDatesCapi"
+                  [minDate]="dateMin"
+                  [maxDate]="dateMax"
                   (returnDate)="setDateCapitalizacionCliente($event)"
                   inputId="dateCapitalizacion"
                 ></app-date-picker>

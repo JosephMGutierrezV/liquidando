@@ -1,17 +1,28 @@
 import { AppState } from './../../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  AfterViewInit,
+  ViewChild,
+} from '@angular/core';
 import * as moment from 'moment';
 import * as actions from './../../../store/actions';
 import { ITableBasic } from 'src/app/interfaces/tables.interface';
 import { IRequestAbono } from 'src/app/interfaces/request.interfaces';
+import { DatePickerComponent } from 'src/app/shared/date-picker/date-picker.component';
+
 @Component({
   selector: 'app-liquide',
   templateUrl: './liquide.component.html',
   styleUrls: ['./liquide.component.scss'],
 })
 export class LiquideComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('dt1') dt1!: DatePickerComponent;
+  @ViewChild('dt2') dt2!: DatePickerComponent;
+
   public showInputOtherRate = false;
   public showResume = false;
 
@@ -39,6 +50,12 @@ export class LiquideComponent implements OnInit, OnDestroy, AfterViewInit {
   public totalInteresesMensualesResumen = 0;
   public granTotalResumen = 0;
   public totalInteresesDias = 0;
+
+  public dateMin: Date = new Date();
+  public dateMax: Date = new Date();
+
+  public invalidDatesAbono: Array<Date> = [];
+  public invalidDatesCapi: Array<Date> = [];
 
   constructor(private store: Store<AppState>) {}
 
@@ -97,10 +114,12 @@ export class LiquideComponent implements OnInit, OnDestroy, AfterViewInit {
 
   setDateBegin(event: any) {
     this.mainDateBegin = event;
+    this.dateMin = new Date(event);
   }
 
   setDateEnd(event: any) {
     this.mainDateEnd = event;
+    this.dateMax = new Date(event);
   }
 
   setDateAbonos(event: any) {
@@ -137,6 +156,9 @@ export class LiquideComponent implements OnInit, OnDestroy, AfterViewInit {
         fecha: this.capitalDate,
         monto: this.capitalizacionClienteForm.value.capitalizacionCliente,
       });
+      const invalidDate = new Date(this.capitalDate);
+      this.invalidDatesAbono.push(invalidDate);
+      this.dt2.resetDefault();
     }
   }
 
@@ -157,6 +179,9 @@ export class LiquideComponent implements OnInit, OnDestroy, AfterViewInit {
         fecha: this.abonosDate,
         monto: this.abonosForm.value.abonos,
       });
+      const invalidDate = new Date(this.abonosDate);
+      this.invalidDatesAbono.push(invalidDate);
+      this.dt1.resetDefault();
     }
   }
 
