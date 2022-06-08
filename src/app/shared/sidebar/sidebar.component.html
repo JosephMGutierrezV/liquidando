@@ -38,6 +38,19 @@
         </div>
       </a>
     </li>
+
+    <li class="nav-item border">
+      <a
+        routerLink="/dashboard/admin"
+        routerLinkActive="active-route"
+        class="nav-link"
+      >
+        <div class="container-menu">
+          <fa-icon [icon]="faUserShield" size="lg"></fa-icon>
+          <p>Admin</p>
+        </div>
+      </a>
+    </li>
     <li class="nav-item border" (click)="logout()">
       <a
         routerLinkActive="active-route"

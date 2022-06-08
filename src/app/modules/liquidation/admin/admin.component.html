@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h5>Captura taza intereses</h5>
+      <hr />
+    </div>
+    <div class="col-12 mb-4">
+      <div class="card border-rounded shadow-sm">
+        <div class="card-body">
+          <form [formGroup]="mainForm">
+            <div class="row">
+              <div class="col-6 mb-2 mt-4 text-center">
+                <label for="date" class="mr-3">Selecione fecha</label>
+                <app-date-picker #dt1 inputId="date"></app-date-picker>
+              </div>
+              <div class="col-6 mb-2">
+                <label for="nuevaTasa" class="form-label">IPC</label>
+                <input
+                  formControlName="IPC"
+                  type="number"
+                  class="form-control"
+                  id="IPC"
+                  aria-describedby="IPC"
+                />
+              </div>
+              <div class="col-6 mb-2">
+                <label for="nuevaTasa" class="form-label">BC_EA</label>
+                <input
+                  formControlName="BC_EA"
+                  type="number"
+                  class="form-control"
+                  id="BC_EA"
+                  aria-describedby="BC_EA"
+                />
+              </div>
+              <div class="col-6 mb-2">
+                <label for="nuevaTasa" class="form-label">BC_MENSUAL</label>
+                <input
+                  formControlName="BC_MENSUAL"
+                  type="number"
+                  class="form-control"
+                  id="BC_MENSUAL"
+                  aria-describedby="BC_MENSUAL"
+                />
+              </div>
+              <div class="col-6 mb-2">
+                <label for="nuevaTasa" class="form-label">USURA_EA</label>
+                <input
+                  formControlName="USURA_EA"
+                  type="number"
+                  class="form-control"
+                  id="USURA_EA"
+                  aria-describedby="USURA_EA"
+                />
+              </div>
+              <div class="col-6 mb-2">
+                <label for="nuevaTasa" class="form-label">USURA_MENSUAL</label>
+                <input
+                  formControlName="USURA_MENSUAL"
+                  type="number"
+                  class="form-control"
+                  id="USURA_MENSUAL"
+                  aria-describedby="USURA_MENSUAL"
+                />
+              </div>
+
+
+              <div class="col-12 text-right mb-2">
+                <button type="button" class="btn btn-success">Subir</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

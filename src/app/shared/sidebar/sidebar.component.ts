@@ -5,6 +5,7 @@ import {
   faCalculator,
   faClock,
   faArrowAltCircleRight,
+  faUserShield
 } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import * as actions from '../../store/actions';
@@ -18,6 +19,7 @@ export class SidebarComponent implements OnInit {
   public faCalculator = faCalculator;
   public faClock = faClock;
   public faArrowAltCircleRight = faArrowAltCircleRight;
+  public faUserShield = faUserShield;
 
   public clickExit = false;
 

@@ -9,7 +9,7 @@ import * as actions from '../../../store/actions';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  public emailForgetPass: string = '';
+  public forgetForm!: FormGroup;
 
   @Input() displayModalLogin = false;
 
@@ -31,6 +31,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
+    });
+    this.forgetForm = new FormGroup({
+      emailForgetPass: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
     });
   }
 
@@ -70,7 +76,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   sendChangePassword() {
     const data = {
-      email: this.emailForgetPass,
+      email: this.forgetForm.value.emailForgetPass,
       psw: this.pswRandom(),
     };
     this.store.dispatch(actions.auth.forgetPasswordLoading({ dataUser: data }));

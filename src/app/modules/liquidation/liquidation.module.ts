@@ -8,6 +8,7 @@ import { DashboardRoutesModule } from '../dashboard/dashboard-routes.module';
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TableModule } from 'primeng/table';
     HomeComponent,
     LiquideComponent,
     DashboardComponent,
+    AdminComponent,
   ],
   imports: [
     CommonModule,

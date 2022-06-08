@@ -63,12 +63,12 @@
     </div>
   </form>
 
-  <form *ngIf="showForgetPass" class="p-3">
+  <form [formGroup]="forgetForm" *ngIf="showForgetPass" class="p-3">
     <div class="form-group mb-3">
       <label for="inputEmailForgetPass">Email</label>
       <input
         type="email"
-        [(ngModel)]="emailForgetPass"
+        formControlName="emailForgetPass"
         class="form-control"
         id="inputEmailForgetPass"
         placeholder="Ingrese su Correo"
