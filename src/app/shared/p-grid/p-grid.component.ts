@@ -1,3 +1,4 @@
+import { AttachmentsFilesService } from './../../services/attachments-files.service';
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Table } from 'primeng/table';
 
@@ -12,7 +13,7 @@ export class PGridComponent implements OnInit {
   @ViewChild('dt') dt!: Table;
   @ViewChild('inputSearch') inputSearch!: ElementRef;
 
-  constructor() {}
+  constructor(private attachmentsFilesService: AttachmentsFilesService) {}
 
   ngOnInit(): void {}
 
@@ -23,5 +24,13 @@ export class PGridComponent implements OnInit {
   clear(table: Table) {
     this.inputSearch.nativeElement.value = '';
     table.clear();
+  }
+
+  getPdf(id: number) {
+    return this.attachmentsFilesService.getPdf(id);
+  }
+
+  getExcel(id: number) {
+    return this.attachmentsFilesService.getExcel(id);
   }
 }

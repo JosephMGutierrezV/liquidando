@@ -61,12 +61,14 @@
       <td>{{ historial.fecha }}</td>
       <td class="text-center">
         <button
+          (click)="getPdf(historial.caso)"
           pButton
           pRipple
           icon="pi pi-file-pdf"
           class="p-button-rounded p-button-success mr-2"
         ></button>
         <button
+          (click)="getExcel(historial.caso)"
           pButton
           pRipple
           icon="pi pi-file-excel"
