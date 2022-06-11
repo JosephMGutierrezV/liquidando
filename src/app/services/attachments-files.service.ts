@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { AppState } from '../store/app.reducer';
-
+const FileSaver = require('file-saver');
 
 @Injectable({
   providedIn: 'root',
@@ -17,23 +17,21 @@ export class AttachmentsFilesService {
   }
 
   getPdf(id: number) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.token,
-      }),
-    };
     return this.http
-      .get(
-        `${environment.API_URL}/historia/listado/impresion/${id}`,
-        httpOptions,
-      )
+      .get(`${environment.API_URL}/historia/listado/impresion/${id}`, {
+        responseType: 'blob',
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.token,
+        }),
+      })
       .toPromise()
       .then((resp: any) => {
-        const blob = new Blob([resp.data], { type: 'application/pdf' });
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = `Listado-${id}.pdf`;
-        link.click();
+        const reader = new FileReader();
+        reader.addEventListener('loadend', (e) => {
+          // dome somenting
+        });
+        reader.readAsArrayBuffer(resp);
+        FileSaver.saveAs(resp, `Listado-${id}.pdf`);
         return;
       })
       .catch((err) => {
@@ -42,22 +40,21 @@ export class AttachmentsFilesService {
   }
 
   getExcel(id: number) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.token,
-      }),
-    };
     return this.http
-      .get(`${environment.API_URL}/reportes/historia/excel/${id}`, httpOptions)
+      .get(`${environment.API_URL}/reportes/historia/excel/${id}`, {
+        responseType: 'blob',
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.token,
+        }),
+      })
       .toPromise()
       .then((resp: any) => {
-        const blob = new Blob([resp.data], {
-          type: 'application/vnd.ms-excel',
+        const reader = new FileReader();
+        reader.addEventListener('loadend', (e) => {
+          // dome somenting
         });
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = `Historial-${id}.xlsx`;
-        link.click();
+        reader.readAsArrayBuffer(resp);
+        FileSaver.saveAs(resp, `Listado-${id}.xlsx`);
         return;
       })
       .catch((err) => {
