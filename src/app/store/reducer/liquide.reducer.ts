@@ -19,6 +19,7 @@ export interface StateLiquide {
   error: IError;
   requestCalculoFinal?: IRequestCalculoFinal;
   responseCalculoFinal?: string;
+  file?: any;
 }
 
 const initialState: StateLiquide = {
@@ -165,6 +166,19 @@ const _reducerLiquide = createReducer(
     ...state,
     error: error,
     loadingCalculoFinal: false,
+  })),
+  on(liquide.calculoFileLoading, (state, { file }) => ({
+    ...state,
+    file: file,
+  })),
+  on(liquide.calculoFileSuccess, (state, { data }) => ({
+    ...state,
+    file: '',
+  })),
+  on(liquide.calculoFileError, (state, { error }) => ({
+    ...state,
+    file: '',
+    error: error,
   }))
 );
 

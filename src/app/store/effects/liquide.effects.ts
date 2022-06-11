@@ -126,4 +126,63 @@ export class LiquideEffects {
       )
     )
   );
+
+  calculoFile$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(liquide.calculoFileLoading),
+      tap(() => {
+        this.store.dispatch(ui.isNotLoading());
+        setTimeout(() => {
+          this.store.dispatch(ui.isLoading());
+        }, 10);
+      }),
+      mergeMap(({ file }) =>
+        this.LiquideService.calculoFile(file)!.pipe(
+          map((data) => liquide.calculoFileSuccess({ data: data })),
+          tap((data: any) => {
+            if (data) {
+              if (data['data']['data'] === 'Exito') {
+                this.store.dispatch(
+                  ui.isSuccess({
+                    success: {
+                      message: 'El calculo se ha realizado correctamente',
+                      state: true,
+                    },
+                  })
+                );
+              } else {
+                this.store.dispatch(
+                  ui.isError({
+                    error: {
+                      message:
+                        'Lo Sentimos Creditos insuficientes, contrata de nuevo!, Gracias',
+                      code: 'calculo-error',
+                    },
+                  })
+                );
+              }
+            }
+          }),
+          catchError((error: any) =>
+            of(liquide.calculoFileError({ error })).pipe(
+              tap((error: any) => {
+                this.store.dispatch(ui.isNotLoading());
+                setTimeout(() => {
+                  this.store.dispatch(
+                    ui.isError({
+                      error: {
+                        message:
+                          error.error.message || 'Error al cargar archivo',
+                        code: error.error.code || 'calculo-file-error',
+                      },
+                    })
+                  );
+                }, 10);
+              })
+            )
+          )
+        )
+      )
+    )
+  );
 }

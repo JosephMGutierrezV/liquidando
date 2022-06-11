@@ -1,9 +1,13 @@
 <p-fileUpload
   name="file[]"
-  (onUpload)="onUpload($event)"
+  (onSelect)="onSelect($event)"
+  (onClear)="onClear($event)"
+  (onRemove)="onClear($event)"
   [cancelLabel]="'Cancelar'"
   [chooseLabel]="'Seleccionar'"
-  [uploadLabel]="'Cargar'"
+  [uploadLabel]="'Calcular'"
+  [customUpload]="true"
+  (uploadHandler)="myUploader($event)"
 >
   <ng-template pTemplate="content">
     <ul *ngIf="uploadedFiles.length">

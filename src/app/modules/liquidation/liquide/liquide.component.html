@@ -274,10 +274,9 @@
               </p>
             </div>
             <div class="col-12 mb-5">
-              <app-drag-drop-file-upload></app-drag-drop-file-upload>
-            </div>
-            <div class="col-12 text-center">
-              <button type="button" class="btn btn-success">Calcular</button>
+              <app-drag-drop-file-upload
+                (fileUp)="setFileUpload($event)"
+              ></app-drag-drop-file-upload>
             </div>
           </div>
         </div>

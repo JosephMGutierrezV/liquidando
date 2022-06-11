@@ -50,3 +50,18 @@ export const calculoFinalizarError = createAction(
   '[Liquide] Calculo Finalizar Error',
   props<{ error: IError }>()
 );
+
+export const calculoFileLoading = createAction(
+  '[Liquide] Calculo File Loading',
+  props<{ file: any }>()
+);
+
+export const calculoFileSuccess = createAction(
+  '[Liquide] Calculo File Success',
+  props<{ data: string }>()
+);
+
+export const calculoFileError = createAction(
+  '[Liquide] Calculo File Error',
+  props<{ error: IError }>()
+);

@@ -25,6 +25,7 @@ export class LiquideComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public showInputOtherRate = false;
   public showResume = false;
+  public file: any;
 
   public subscriptions: any[] = [];
 
@@ -263,5 +264,26 @@ export class LiquideComponent implements OnInit, OnDestroy, AfterViewInit {
 
   deleteItemAbonos(abono: any) {
     this.dataAbonos = this.dataAbonos.filter((val) => val.id !== abono.id);
+  }
+
+  setFileUpload(file: any) {
+    this.file = file;
+  }
+
+  onClickCalularFile() {
+    if (!this.file) {
+      this.store.dispatch(
+        actions.ui.isError({
+          error: {
+            message: 'Debe cargar un archivo',
+            code: 'error_form_invalid',
+          },
+        })
+      );
+      return;
+    }
+    this.store.dispatch(
+      actions.liquide.calculoFileLoading({ file: this.file })
+    );
   }
 }

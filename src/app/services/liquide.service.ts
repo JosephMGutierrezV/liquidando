@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import jwtDecode from 'jwt-decode';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
@@ -14,7 +15,7 @@ import { AppState } from '../store/app.reducer';
   providedIn: 'root',
 })
 export class LiquideService {
-  private token = '';
+  private token: any;
 
   constructor(private http: HttpClient, private store: Store<AppState>) {
     this.store.select('auth').subscribe((auth) => {
@@ -30,6 +31,26 @@ export class LiquideService {
     const request = this.buildRequestCalculo(requestData);
     return this.http
       .post(`${environment.API_URL}/amortizacion/calculo`, request, httpOptions)
+      .pipe(map((resp: any) => resp));
+  }
+
+  calculoFile(requestData: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.token,
+      }),
+    };
+    const formData = new FormData();
+    const blob = new Blob(requestData);
+    const decoded: any = jwtDecode(this.token);
+    formData.append('id', decoded['identity']['id']);
+    formData.append('file', blob);
+    return this.http
+      .post(
+        `${environment.API_URL}/recibe/archivo/excel`,
+        formData,
+        httpOptions
+      )
       .pipe(map((resp: any) => resp));
   }
 
