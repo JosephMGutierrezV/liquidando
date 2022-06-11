@@ -5,6 +5,7 @@ import { LadingComponent } from './lading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthModule } from '../auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [LadingComponent],
   imports: [
@@ -13,6 +14,7 @@ import { AuthModule } from '../auth/auth.module';
     NgbCollapseModule,
     SharedModule,
     AuthModule,
+    HttpClientModule,
   ],
 })
 export class LadingModule {}

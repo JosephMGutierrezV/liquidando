@@ -1,12 +1,10 @@
-import { AppState } from './../../store/app.reducer';
-import { Store } from '@ngrx/store';
+import { QuestionsService } from './services/questions.service';
 import { Component, OnInit } from '@angular/core';
 import {
   faLaugh,
   faArrowCircleDown,
   faPlayCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import * as actions from '../../store/actions';
 
 @Component({
   selector: 'app-lading',
@@ -20,10 +18,13 @@ export class LadingComponent implements OnInit {
   public displayModalLogin = false;
   public displayModalRegister = false;
   public showForgetPass = false;
+  public questionsAnswers!: any;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private questionService: QuestionsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.questionsAnswers = this.questionService.getQuestions();
+  }
 
   onDisplayLogin() {
     this.showForgetPass = false;

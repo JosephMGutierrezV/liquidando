@@ -431,8 +431,11 @@
       <h3 class="text-color-primary">Preguntas frecuentes</h3>
       <p>Dudas? Resuelvelas rapido consultando nuestra guia</p>
     </div>
-    <div class="col-12 col-lg-6 mb-5">
-      <app-question></app-question>
+    <div
+      class="col-12 col-lg-6 mb-5"
+      *ngFor="let questionAnswer of questionsAnswers | async"
+    >
+      <app-question [data]="questionAnswer"></app-question>
     </div>
     <div class="col-12 col-lg-6 mb-5">
       <div class="text-end">

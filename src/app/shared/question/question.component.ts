@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,9 +7,11 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
-  public isCollapsed = false;
+  public isCollapsed = true;
   public faAngleDown = faAngleDown;
   public faAngleUp = faAngleUp;
+  @Input() data: any;
+
   constructor() {}
 
   ngOnInit(): void {}
